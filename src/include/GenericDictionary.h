@@ -136,7 +136,7 @@ searchTable{definitions}
 template <typename dictID, typename dictName>
 dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
 {
-    searchTableNotInitialized("getIds", itemName);
+    searchTableNotInitialized("getIds", "name value");
     auto definition = std::find_if(searchTable.begin(), searchTable.end(),
         [&itemName](DictType &dicItem) {return (dicItem.names == itemName);});
 
