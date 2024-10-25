@@ -59,6 +59,11 @@ public:
 // Example
 // GenericDictionary(enum::NO_VALUE, enum::LAST_VALUE)
 
+    GenericDictionary()
+    : MinimumValue{0},
+      MaximumValue{0}
+    {};
+
 // Safe constructor that will not throw exceptions, but the search table is
 // not initialized.
     GenericDictionary(dictID MinValue, dictID MaxValue)
@@ -74,7 +79,9 @@ public:
     virtual dictID getIds(dictName itemName);
     virtual dictName getNames(dictID id);
     bool addAllDefinitions(std::ranges::input_range auto&& definitions);
+    bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions);
     bool addAllDefinitions(std::initializer_list<DictType> definitions);
+    bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions);
 
 protected:
     bool alreadyDefined(DictType candidate) noexcept;
@@ -84,6 +91,8 @@ protected:
     bool hasDuplicateNames();
     bool hasID(dictID id) noexcept;
     bool hasName(dictName name) noexcept;
+    void limitsNotSet(std::string funcName, std::string searchValue);
+    void sanityCheck(std::string funcName, std::string searchValue);
     void searchTableNotInitialized(std::string funcName, std::string searchValue);
     bool testForNoneLinearDefinitions(std::string funcName);
     [[nodiscard]] bool addDefinition(dictID id, dictName name) noexcept;
@@ -136,7 +145,7 @@ searchTable{definitions}
 template <typename dictID, typename dictName>
 dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
 {
-    searchTableNotInitialized("getIds", "name value");
+    sanityCheck("getIds", "name value");
     auto definition = std::find_if(searchTable.begin(), searchTable.end(),
         [&itemName](DictType &dicItem) {return (dicItem.names == itemName);});
 
@@ -151,7 +160,7 @@ dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
 template <typename dictID, typename dictName>
 dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
 {
-    searchTableNotInitialized("getNames", "enum value");
+    sanityCheck("getNames", "enum value");
     if (MinimumValue > id && id < MaximumValue)
     {
         auto definition = std::ranges::find(searchTable, id, &DictType::id);
@@ -166,9 +175,21 @@ dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
 }
 
 template <typename dictID, typename dictName>
+bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions)
+{
+    bool noErrors = true;
+
+    MinimumValue = MinValue;
+    MaximumValue = MaxValue;
+    return addAllDefinitions(definitions);
+}
+
+template <typename dictID, typename dictName>
 bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::ranges::input_range auto&& definitions)
 {
     bool noErrors = true;
+
+    limitsNotSet("addAllDefinitions","");
 
     for (auto const& newDef : definitions)
     {
@@ -199,9 +220,41 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::initializer_lis
 
     return addAllDefinitions(tmpMap);
 }
+
+template <typename dictID, typename dictName>
+bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions)
+{
+    std::vector<DictType> tmpMap;
+
+    for (auto const& newDef : definitions)
+    {
+        tmpMap.push_back(newDef);
+    }
+
+    return addAllDefinitions(MinValue, MaxValue, tmpMap);
+}
 /*
  * Protected/Private methods
  */
+template<typename dictID, typename dictName>
+void GenericDictionary<dictID, dictName>::sanityCheck(std::string funcName, std::string searchValue)
+{
+    limitsNotSet(funcName, searchValue);
+    searchTableNotInitialized(funcName, searchValue);
+}
+
+template<typename dictID, typename dictName>
+void GenericDictionary<dictID, dictName>::limitsNotSet(std::string funcName, std::string searchValue)
+{
+    if (!(static_cast<std::size_t>(MaximumValue) > static_cast<std::size_t>(MinimumValue)))
+    {
+        std::string emsg("In GenericDictionary::" + funcName + " (" + searchValue +"): ");
+        emsg += "The minimum and maximum enum values have not been set.";
+        std::logic_error notInitialized(emsg);
+        throw notInitialized;
+   }
+}
+
 template<typename dictID, typename dictName>
 void GenericDictionary<dictID, dictName>::searchTableNotInitialized(std::string funcName, std::string searchValue)
 {
