@@ -38,18 +38,21 @@ struct GenricDictionaryDataPair<ENUMNAME, NameType>  // NameType will generally 
 ```
 
 ## Constructors:  
- - GenericDictionary<ENUMNAME, NameType>() // The default constructor, creates an empty instance of the class.  
- - GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum) // Sets the upper and lower limits of the range of enums used  
- - GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum, std::vector<GenricDictionaryDataPair<ENUMNAME, NameType>>)  
-     // Sets the upper and lower limits of the range of enums used  
-     // Initializes the internal data structures for searches  
-     // Checks the input data for any duplicates or missing definitions
-     // will throw exceptions in the case of duplicates or missing definitions  
- - GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum, Initializer List  {<GenricDictionaryDataPair<ENUMNAME, NameType>>, ...})  
-     // Sets the upper and lower limits of the range of enums used  
-     // Initializes the internal data structures for searches  
-     // Checks the input data for any duplicates or missing definitions
-     // will throw exceptions in the case of duplicates or missing definitions  
+
+```
+GenericDictionary<ENUMNAME, NameType>() // The default constructor, creates an empty instance of the class.  
+GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum) // Sets the upper and lower limits of the range of enums used  
+GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum, std::vector<GenricDictionaryDataPair<ENUMNAME, NameType>>)  
+   // Sets the upper and lower limits of the range of enums used  
+   // Initializes the internal data structures for searches  
+   // Checks the input data for any duplicates or missing definitions
+   // will throw exceptions in the case of duplicates or missing definitions  
+GenericDictionary<ENUMNAME, NameType>(ENUM::Invalid_enum_Value, ENUM::Last_Enum, Initializer List  {<GenricDictionaryDataPair<ENUMNAME, NameType>>, ...})  
+   // Sets the upper and lower limits of the range of enums used  
+   // Initializes the internal data structures for searches  
+   // Checks the input data for any duplicates or missing definitions
+   // will throw exceptions in the case of duplicates or missing definitions  
+```
      
 ## Public Methods  
 
@@ -96,5 +99,4 @@ Multiple constructors have been added, including a default constructor.
  - Add performance tests that test different containers in the GenericDictionary (std::vector versus std::map)
  - Integrate the generated performance tests into the unit testing.
  - Make sure all paths through the code are tested.
- - Fix test failures in original testing.
- - Change ColumnTable testing to use the class without inheritance.
+
