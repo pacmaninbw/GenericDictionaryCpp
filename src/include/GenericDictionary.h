@@ -82,6 +82,19 @@ public:
     bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions);
     bool addAllDefinitions(std::initializer_list<DictType> definitions);
     bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions);
+    void debugDumpData() const noexcept
+    {
+        std::cerr << "\n\nGenericDictionary::Debug Dump Data\n";
+        std::cerr << "\tMinimumValue: " << static_cast<std::size_t>(MinimumValue) << "\n";
+        std::cerr << "\tMaximumValue: " << static_cast<std::size_t>(MaximumValue) << "\n";
+        std::cerr << "Search Table:\n\t{\n";
+        for (auto searchItem: searchTable)
+        {
+            std::cerr << "\t\tID int value " << static_cast<std::size_t>(searchItem.id) 
+                << " Name value " << searchItem.names << "\n";
+        }
+        std::cerr << "\t}\n";
+    }
 
 protected:
     bool alreadyDefined(DictType candidate) noexcept;
@@ -161,7 +174,7 @@ template <typename dictID, typename dictName>
 dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
 {
     sanityCheck("getNames", "enum value");
-    if (MinimumValue > id && id < MaximumValue)
+    if (MinimumValue < id && id < MaximumValue)
     {
         auto definition = std::ranges::find(searchTable, id, &DictType::id);
         if (definition != searchTable.end())
