@@ -85,6 +85,10 @@ The DictionaryBase class should be portable to all systems and all C++20 compile
 - Windows 10
 - Visual Studion 2022
 
+## Building The Tests  
+cmake -B build  
+cmake --build build -j  
+
 # Status  
 This code was reviewed on the [Stack Exchange Code Review site](https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation). The code reviewed in that review can be found in the `PreCodeReview` branch. Development is continuing in the `master` branch.  
 
