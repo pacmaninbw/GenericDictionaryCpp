@@ -82,6 +82,8 @@ public:
     bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions);
     bool addAllDefinitions(std::initializer_list<DictType> definitions);
     bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions);
+    
+#ifdef DEBUG
     void debugDumpData() const noexcept
     {
         std::cerr << "\n\nGenericDictionary::Debug Dump Data\n";
@@ -95,6 +97,7 @@ public:
         }
         std::cerr << "\t}\n";
     }
+#endif // DEBUG
 
 protected:
     bool alreadyDefined(DictType candidate) noexcept;
