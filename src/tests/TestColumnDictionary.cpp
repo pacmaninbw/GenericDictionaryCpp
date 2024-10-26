@@ -1,5 +1,4 @@
 #include <iostream>
-#include "ColumnDictionary.h"
 #include "TestColumnDictionary.h"
 #include "../include/UtilityTimer.h"
 
@@ -80,11 +79,11 @@ bool TestColumnDictionary::executeStandAloneTests() noexcept
 
     for (auto testCandidate: positiveColumnTestData)
     {
-        if (!standAloneIdToName(testCandidate.testId, testCandidate.testName))
+        if (!standAloneIdToName(testCandidate.id, testCandidate.names))
         {
             return false;
         }
-        if (!standAloneNameToID(testCandidate.testName, testCandidate.testId))
+        if (!standAloneNameToID(testCandidate.names, testCandidate.id))
         {
             return false;
         }
@@ -114,15 +113,15 @@ bool TestColumnDictionary::executeCommonGDTests() noexcept
     std::cout << "\nTesting Common Dictionary ColumnDictionary\n";
     try
     {
-        ColumnDictionary underTest;
+        GenericDictionary<ColumnIds, std::string> underTest(ColumnIds::NO_COLUMN, ColumnIds::LAST_COLUMN_ID, positiveColumnTestData);
 
         for (auto testCandidate: positiveColumnTestData)
         {
-            if (!commonGDIdToName(underTest, testCandidate.testId, testCandidate.testName))
+            if (!commonGDIdToName(underTest, testCandidate.id, testCandidate.names))
             {
                 return false;
             }
-            if (!commonGDNameToID(underTest, testCandidate.testName, testCandidate.testId))
+            if (!commonGDNameToID(underTest, testCandidate.names, testCandidate.id))
             {
                 return false;
             }
@@ -156,20 +155,23 @@ bool TestColumnDictionary::executeCommonGDTests() noexcept
     return allTestsPassed;
 }
 
-bool TestColumnDictionary::commonGDIdToName(ColumnDictionary &underTest, ColumnIds input, std::string expectedOutput) noexcept
+bool TestColumnDictionary::commonGDIdToName(GenericDictionary<ColumnIds, std::string> &underTest, ColumnIds input, std::string expectedOutput) noexcept
 {
     std::string actualOutPut = underTest.getNames(input);
 
     if (!expectedOutput.compare(actualOutPut) == 0)
     {
-        std::cerr << "Common Dictionary Column ID to Name Test Failed " << expectedOutput << "\n";
+        std::cerr << "Common Dictionary Column ID to Name Test Failed: input: " << static_cast<int>(input)
+            << " Expected Output: "  << expectedOutput
+            << " Actual Output: " << actualOutPut
+            << "\n";
         return false;
     }
 
     return true;
 }
 
-bool TestColumnDictionary::commonGDNameToID(ColumnDictionary &underTest, std::string input, ColumnIds expectedOutput) noexcept
+bool TestColumnDictionary::commonGDNameToID(GenericDictionary<ColumnIds, std::string> &underTest, std::string input, ColumnIds expectedOutput) noexcept
 {
     ColumnIds actualOutPut = underTest.getIds(input);
 
@@ -186,7 +188,7 @@ bool TestColumnDictionary::standAloneIdToName(ColumnIds input, std::string expec
 {
     try
     {
-        ColumnDictionary underTest;
+        GenericDictionary<ColumnIds, std::string> underTest(ColumnIds::NO_COLUMN, ColumnIds::LAST_COLUMN_ID, positiveColumnTestData);
         std::string actualOutPut = underTest.getNames(input);
 
         if (!expectedOutput.compare(actualOutPut) == 0)
@@ -213,7 +215,7 @@ bool TestColumnDictionary::standAloneNameToID(std::string input, ColumnIds expec
 {
     try
     {
-        ColumnDictionary underTest;
+        GenericDictionary<ColumnIds, std::string> underTest(ColumnIds::NO_COLUMN, ColumnIds::LAST_COLUMN_ID, positiveColumnTestData);
         ColumnIds actualOutPut = underTest.getIds(input);
 
         if (expectedOutput != actualOutPut)

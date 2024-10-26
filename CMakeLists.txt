@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(TestDictionary
     src/tests/TestDictionary.cpp
-    src/tests/ColumnDictionary.cpp
     src/tests/TableDictionary.cpp
     src/tests/TestColumnDictionary.cpp
     src/tests/TestTableDictionary.cpp

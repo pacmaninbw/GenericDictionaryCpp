@@ -8,11 +8,10 @@
  * used in another project.
  */
 
+#include "../include/GenericDictionary.h"
 #include "columnidenum.h"
 #include <string>
 #include <vector>
-
-class ColumnDictionary;
 
 class TestColumnDictionary
 {
@@ -24,16 +23,11 @@ public:
     bool executeCommonGDTests() noexcept;
 
 private:
-    bool commonGDIdToName(ColumnDictionary &underTest, ColumnIds input, std::string expectedOutput) noexcept;
-    bool commonGDNameToID(ColumnDictionary &underTest, std::string input, ColumnIds expectedOutput) noexcept;
+    bool commonGDIdToName(GenericDictionary<ColumnIds, std::string> &underTest, ColumnIds input, std::string expectedOutput) noexcept;
+    bool commonGDNameToID(GenericDictionary<ColumnIds, std::string> &underTest, std::string input, ColumnIds expectedOutput) noexcept;
     bool standAloneIdToName(ColumnIds input, std::string expectedOutput) noexcept;
     bool standAloneNameToID(std::string input, ColumnIds expectedOutput) noexcept;
-    struct CTestData
-    {
-        ColumnIds testId;
-        std::string testName;
-    };
-    std::vector<CTestData> positiveColumnTestData;
+    std::vector<GenricDictionaryDataPair<ColumnIds, std::string>> positiveColumnTestData;
 };
 
 #endif // TESTCOLUMNDICTIONARY_H
