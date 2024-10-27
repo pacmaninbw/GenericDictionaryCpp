@@ -197,6 +197,7 @@ bool TestGenericDictionary::testConstructorDuplicateID() noexcept
         std::cout << "GenericDictionary Constructor Negative Path Test: Duplicate ID enum\n";
         
         // GDPOSITIVE_TEST_VALUE_2 is duplicated
+        // GDPOSITIVE_TEST_VALUE_5 is missing
         GenericDictionary <GDPositivePathEnum, std::string> expectedFailure(
             GDPositivePathEnum::GDPOSITIVE_INVALID_VALUE,
             GDPositivePathEnum::GDPOSITIVE_LAST_ENUM,
@@ -209,6 +210,7 @@ bool TestGenericDictionary::testConstructorDuplicateID() noexcept
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_6, positiveGDTestStrings[6]}
             }
         );
+        expectedFailure.debugDumpData();
     }
     catch (const std::logic_error &le)
     {
