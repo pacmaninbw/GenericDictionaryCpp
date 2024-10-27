@@ -48,6 +48,11 @@
         "ostream": "cpp",
         "sstream": "cpp",
         "stdexcept": "cpp",
-        "streambuf": "cpp"
+        "streambuf": "cpp",
+        "codecvt": "cpp",
+        "optional": "cpp",
+        "fstream": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }
