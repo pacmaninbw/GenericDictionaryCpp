@@ -93,7 +93,8 @@ public:
     void enableExceptions(bool exceptionsEnabled) { throwException = exceptionsEnabled; };
 
 #ifdef GD_UNIT_TEST
-    std::vector<DictType> getUserInput() { return userInputList; }
+    std::vector<DictType> getUserInput() const noexcept { return userInputList; }
+    bool selfUnitTest();
 #endif
 
 #ifdef DEBUG
@@ -103,7 +104,7 @@ public:
 #endif // DEBUG
 
 protected:
-    bool commonInternalListBuilder(std::string funcName);
+    [[nodiscard]] bool commonInternalListBuilder(std::string funcName);
     [[nodiscard]] bool alreadyDefined(DictType candidate) noexcept { return hasID(candidate.id) || hasName(candidate.names); };
     [[nodiscard]] bool missingIDSizeTest(std::string funcName);
     [[nodiscard]] bool hasDuplicateNames();
@@ -153,7 +154,11 @@ MaximumValue{MaxValue}
     }
 
     throwException = true;
-    commonInternalListBuilder("Constructor");
+    if (!commonInternalListBuilder("Constructor"))
+    {
+        std::string emsg("GenericDictionary::GenericDictionary(std::initializer_list): Search List Initialization Error: Check duplication of name strings");
+        reportErrorOrThrowExceptions(emsg);
+    }
     throwException = false;
 }
 
@@ -164,7 +169,11 @@ MaximumValue{MaxValue},
 userInputList{definitions}
 {
     throwException = true;
-    commonInternalListBuilder("Constructor");
+    if (!commonInternalListBuilder("Constructor"))
+    {
+        std::string emsg("GenericDictionary::GenericDictionary(std::vector): Search List Initialization Error: Check duplication of name strings");
+        reportErrorOrThrowExceptions(emsg);
+    }
     throwException = false;
 }
 
@@ -296,13 +305,9 @@ void GenericDictionary<dictID, dictName>::debugDumpData() const noexcept
 /******************************************************************************
  * Protected/Private methods
  *****************************************************************************/
-// Used by multiple constructors and all functions that add a list of DictType.
-// The constructors that use this function enable exception throwing before
-// calling this function all other calls to this function should check the
-// return status because any errors encountered here will prevent retrieval of
-// names or IDs.
+
 template<typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string funcName)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string funcName)
 {
     if (missingIDSizeTest(funcName))
     {
@@ -321,6 +326,11 @@ bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string 
             return false;
         }
     }
+
+// The id search table is already sorted in testForIDNoneLinearDefinitions(),
+// sort the name search table for performance.
+    std::sort(nameSearchTable.begin(), nameSearchTable.end(),
+        [](DictType defIter1, DictType defIter2) {return  defIter1.names < defIter2.names;});
 
     return true;
 }
@@ -508,6 +518,13 @@ void GenericDictionary<dictID, dictName>::reportErrorOrThrowExceptions(std::stri
 
 #ifdef GD_UNIT_TEST
 #include <iostream>
+
+template <typename dictID, typename dictName>
+bool GenericDictionary<dictID, dictName>::selfUnitTest()
+{
+
+    return true;
+}
 
 template <typename enumDictType>
 static bool testIdToName(
