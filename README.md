@@ -100,7 +100,5 @@ A new repository was created, the original version of the GenericDictionary was 
 
 Multiple constructors have been added, including a default constructor.  
 # Todo Items  
- - Add performance tests that test different containers in the GenericDictionary (std::vector versus std::map)
  - Integrate the generated performance tests into the unit testing.
- - Make sure all paths through the code are tested.
 
