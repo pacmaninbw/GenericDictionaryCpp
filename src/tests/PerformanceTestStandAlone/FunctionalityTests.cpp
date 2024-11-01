@@ -371,6 +371,76 @@ static bool defaultConstructorAddArray() noexcept
     return defaultExpectSuccessArray("testArray", "Adding definitions by array", "newAddArray", newAddtestVec);
 }
 
+static bool limitsConstructorAddVector() noexcept
+{
+    return limitsExpectSuccessRange("testVector", "add definitions by vector", "newAddtestVec", newAddtestVec);
+}
+
+static bool limitsConstructorAddArray() noexcept
+{
+    return limitsExpectSuccessArray("testArray", "add definitions by array", "newAddArray", newAddtestVec);
+}
+
+static bool defaultConstAddVecMultiID() noexcept
+{
+    return (defaultExpectFailureRange("AddultiID", "Duplicate IDs", "testVecMultiID", testVecMultiID));
+}
+
+static bool defaultConstAddVecMultiName() noexcept
+{
+    return (defaultExpectFailureRange("AddultiName", "Duplicate Names", "testVecMultiName", testVecMultiName));
+}
+
+static bool defaultConstAddVecMultiIDMultiName() noexcept
+{
+    return (defaultExpectFailureRange("AddultiNameID", "Duplicate Names Duplicate IDs", "testVecMultiNameMultiID", testVecMultiNameMultiID));
+}
+
+static bool defaultConstAddArrMultiID() noexcept
+{
+    return (defaultExpectFailArray("AddArrayMultiID", "Duplicate IDs", "testArrayMultiID", testVecMultiID));
+}
+
+static bool defaultConstAddArrMultiName() noexcept
+{
+    return (defaultExpectFailArray("AddArrayMultiName", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
+}
+
+static bool defaultConstAddArrMultiIDMultiName() noexcept
+{
+    return (defaultExpectFailArray("AddArrayMultiIdMultiName", "Duplicate Names Duplicate IDs in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
+}
+
+static bool limitsConstAddVecMultiID() noexcept
+{
+    return (limitsExpectFailureRange("AddVecMultiID", "Duplicate IDs in Array", "testVecMultiID", testVecMultiID));
+}
+
+static bool limitsConstAddVecMultiName() noexcept
+{
+    return (limitsExpectFailureRange("AddVectorMultiNames", "Duplicate Names in Vector", "testVecMultiName", testVecMultiName));
+}
+
+static bool limitsConstAddVecMultiIDMultiName() noexcept
+{
+    return (limitsExpectFailureRange("AddVectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testVecMultiNameMultiID", testVecMultiNameMultiID));
+}
+
+static bool limitsConstAddArrMultiID() noexcept
+{
+    return (limitsExpectFailArray("AddArrayMultiID", "Duplicate IDs in Array", "testArrayMultiID", testVecMultiID));
+}
+
+static bool limitsConstAddArrMultiName() noexcept
+{
+    return (limitsExpectFailArray("AddArrayMultiNames", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
+}
+
+static bool limitsConstAddArrMultiIDMultiName() noexcept
+{
+    return (limitsExpectFailArray("AddArrayMultiIDMultiNames", "Duplicate IDs Duplicate Names in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
+}
+
 static bool defaultConstructorAddInitializerList() noexcept
 {
     bool testPassed = true;
@@ -419,16 +489,6 @@ static bool defaultConstructorAddInitializerList() noexcept
     return testPassed;
 }
 
-static bool limitsConstructorAddVector() noexcept
-{
-    return limitsExpectSuccessRange("testVector", "add definitions by vector", "newAddtestVec", newAddtestVec);
-}
-
-static bool limitsConstructorAddArray() noexcept
-{
-    return limitsExpectSuccessArray("testArray", "add definitions by array", "newAddArray", newAddtestVec);
-}
-
 static bool limitsConstructorAddInitializerList() noexcept
 {
     bool testPassed = true;
@@ -474,68 +534,6 @@ static bool limitsConstructorAddInitializerList() noexcept
     std::cout << "\n";
 
     return testPassed;
-}
-
-
-static bool defaultConstAddVecMultiID() noexcept
-{
-    return (defaultExpectFailureRange("AddultiID", "Duplicate IDs", "testVecMultiID", testVecMultiID));
-}
-
-static bool defaultConstAddVecMultiName() noexcept
-{
-    return (defaultExpectFailureRange("AddultiName", "Duplicate Names", "testVecMultiName", testVecMultiName));
-}
-
-static bool defaultConstAddVecMultiIDMultiName() noexcept
-{
-    return (defaultExpectFailureRange("AddultiNameID", "Duplicate Names Duplicate IDs", "testVecMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool defaultConstAddArrMultiID() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiID", "Duplicate IDs", "testArrayMultiID", testVecMultiID));
-}
-
-static bool defaultConstAddArrMultiName() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiName", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
-}
-
-static bool defaultConstAddArrMultiIDMultiName() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiIdMultiName", "Duplicate Names Duplicate IDs in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-
-static bool limitsConstAddVecMultiID() noexcept
-{
-    return (limitsExpectFailureRange("AddVecMultiID", "Duplicate IDs in Array", "testVecMultiID", testVecMultiID));
-}
-
-static bool limitsConstAddVecMultiName() noexcept
-{
-    return (limitsExpectFailureRange("AddVectorMultiNames", "Duplicate Names in Vector", "testVecMultiName", testVecMultiName));
-}
-
-static bool limitsConstAddVecMultiIDMultiName() noexcept
-{
-    return (limitsExpectFailureRange("AddVectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testVecMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool limitsConstAddArrMultiID() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiID", "Duplicate IDs in Array", "testArrayMultiID", testVecMultiID));
-}
-
-static bool limitsConstAddArrMultiName() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiNames", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
-}
-
-static bool limitsConstAddArrMultiIDMultiName() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiIDMultiNames", "Duplicate IDs Duplicate Names in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
 }
 
 static bool defaultConstAddInitListMultiID() noexcept
