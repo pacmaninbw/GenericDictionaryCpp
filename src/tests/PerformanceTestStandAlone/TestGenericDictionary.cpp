@@ -17,7 +17,7 @@ bool TestGenericDictionary::executeTests() noexcept
     bool allTestsPassed = true;
     UtilityTimer testTimer;
 
-    std::cout << "Testing the GenericDictionary class\n";
+    std::cout << "Testing the GenericDictionary class Constructors\n";
     try
     {
         testTimer.startTimer();
@@ -63,11 +63,11 @@ bool TestGenericDictionary::executeTests() noexcept
     
     if (allTestsPassed)
     {
-        std::cout << "Testing the GenericDictionary class: ALL TESTS PASSED!\n";
+        std::cout << "Testing the GenericDictionary class Constructors: ALL TESTS PASSED!\n";
     }
     else
     {
-        std::cerr << "Testing the GenericDictionary class: SOME OR ALL TESTS FAILED!\n";
+        std::cerr << "Testing the GenericDictionary class Constructors: SOME OR ALL TESTS FAILED!\n";
     }
 
     return allTestsPassed;
