@@ -174,8 +174,8 @@ bool TestGenericDictionary::testConstructorMissingIDDef() noexcept
     }
     catch (const std::logic_error &le)
     {
-        std::cerr << "GenericDictionary Constructor threw expected std::logic_error: " << le.what() << "\n";
-        std::cout << "\tGenericDictionary Constructor Negative Path Test: Missing ID enum: PASSED\n\n";
+        std::cerr << "GenericDictionary Constructor threw expected std::logic_error: \n\t" << le.what() << "\n";
+        std::cout << "GenericDictionary Constructor Negative Path Test: Missing ID enum: PASSED\n\n";
         return true;
     }
     catch(const std::exception& e)
@@ -210,7 +210,6 @@ bool TestGenericDictionary::testConstructorDuplicateID() noexcept
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_6, positiveGDTestStrings[6]}
             }
         );
-        expectedFailure.debugDumpData();
     }
     catch (const std::logic_error &le)
     {

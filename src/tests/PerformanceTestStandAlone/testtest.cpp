@@ -7,8 +7,7 @@
 
 int main(void)
 {
-	FunctionalityTests unitTest;
-	if (!unitTest.executeAllTests())
+	if (!executeAllFuntionalTests())
     {
         return EXIT_FAILURE;
     }
@@ -18,6 +17,7 @@ int main(void)
     {
         return EXIT_FAILURE;
     }
+    std::cout.flush();
 
     std::cout << "EXECUTING PERFORMANCE TESTS\n\n";
 
@@ -25,6 +25,7 @@ int main(void)
     {
         return EXIT_FAILURE;
     }
+    std::cout.flush();
 
     return EXIT_SUCCESS;
 }

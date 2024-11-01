@@ -34,13 +34,13 @@ TableIds TableDictionary::getId(std::string key) noexcept
 {
     TableIds id = TableIds::NO_TABLE;
 
-    auto definition = std::find_if(searchTable.begin(), searchTable.end(),
+    auto definition = std::find_if(nameSearchTable.begin(), nameSearchTable.end(),
         [&key](DictType &dicItem) {
             return (dicItem.names.first == key ||
             dicItem.names.second == key);
         });
 
-    if (definition != searchTable.end())
+    if (definition != nameSearchTable.end())
     {
         id = definition->id;
     }
