@@ -18,7 +18,7 @@
 
 /*
  * This class provides a basic conversion of enums or integers to strings. The
- * class can be used as is, or as defIter1 base for defIter1 more complex object.
+ * class can be used as is, or as a base for more complex object.
  * 
  * More complex objects than strings are also supported, however, overrides will
  * be necessary.
@@ -101,25 +101,22 @@ public:
 #endif // DEBUG
 
 protected:
-    [[nodiscard]] bool commonInternalListBuilder(std::string funcName);
+    [[nodiscard]] bool commonInternalListBuilder(std::string funcName) noexcept;
     [[nodiscard]] bool alreadyDefined(DictType candidate) noexcept { return hasID(candidate.id) || hasName(candidate.names); };
-    [[nodiscard]] bool missingIDSizeTest(std::string funcName);
-    [[nodiscard]] bool hasDuplicateNames(std::string funcName);
+    [[nodiscard]] bool missingIDSizeTest(std::string funcName) noexcept;
+    [[nodiscard]] bool reportDuplicateNameErrors(std::string funcName) noexcept;
     [[nodiscard]] bool hasID(dictID id) noexcept;
     [[nodiscard]] bool hasName(dictName name) noexcept;
-    [[nodiscard]] bool limitsNotSet(std::string funcName, std::string searchValue);
-    [[nodiscard]] bool sanityCheck(std::string funcName, std::string searchValue);
-    [[nodiscard]] bool searchTableNotInitialized(std::string funcName, std::string searchValue);
+    [[nodiscard]] bool limitsNotSet(std::string funcName, std::string searchValue) noexcept;
+    [[nodiscard]] bool sanityCheck(std::string funcName, std::string searchValue) noexcept;
+    [[nodiscard]] bool searchTableNotInitialized(std::string funcName, std::string searchValue) noexcept;
     [[nodiscard]] bool sortAndTestIds(std::string& emsg) noexcept;
-    [[nodiscard]] bool testForIDNoneLinearDefinitions(std::string funcName);
+    [[nodiscard]] bool testForIDNoneLinearDefinitions(std::string funcName) noexcept;
     [[nodiscard]] bool addDefinition(DictType newDef) noexcept;
-    void reportErrorOrThrowExceptions(std::string eMsg);
 
 /*
- * Don't change the order of the following member variables since they
+ * Don't change the order of the following 2 member variables since they
  * are set in contructors and the order is important.
- * 
- * The MinimumValue and MaximumValue can only be set in constructors.
  */
     dictID MinimumValue;
     dictID MaximumValue;
@@ -127,10 +124,6 @@ protected:
     std::unordered_map<dictID, dictName> idSearchTable;
     std::unordered_map<dictName, dictID> nameSearchTable;
     std::vector<DictType> userInputList;
-
-/*
- * Member variables not initialized in constructor argument lists
- */
     bool throwException = false;
 };
 
@@ -147,13 +140,11 @@ MaximumValue{MaxValue}
         userInputList.push_back(newDef);
     }
 
-    throwException = true;
     if (!commonInternalListBuilder("Constructor"))
     {
-        std::string emsg("GenericDictionary::GenericDictionary(std::initializer_list): Search List Initialization");
-        reportErrorOrThrowExceptions(emsg);
+        std::logic_error constructorError("GenericDictionary::GenericDictionary(std::initializer_list): Search List Initialization");
+        throw constructorError;
     }
-    throwException = false;
 }
 
 template <typename dictID, typename dictName>
@@ -162,13 +153,11 @@ GenericDictionary<dictID, dictName>::GenericDictionary(dictID MinValue, dictID M
 MaximumValue{MaxValue},
 userInputList{definitions}
 {
-    throwException = true;
     if (!commonInternalListBuilder("Constructor"))
     {
-        std::string emsg("GenericDictionary::GenericDictionary(std::vector): Search List Initialization Error");
-        reportErrorOrThrowExceptions(emsg);
+        std::logic_error constructorError("GenericDictionary::GenericDictionary(std::vector): Search List Initialization Error");
+        throw constructorError;
     }
-    throwException = false;
 }
 
 template <typename dictID, typename dictName>
@@ -181,6 +170,15 @@ dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
         {
             return definition->second;
         }
+    }
+    else
+    {
+        if (throwException)
+        {
+            std::logic_error constructionError("GenericDictionary::addAllDefinitions(): Errors Occured.");
+            throw constructionError;
+        }
+
     }
 
     return static_cast<dictID>(MinimumValue);
@@ -197,11 +195,23 @@ dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
             return definition->second;
         }
     }
+    else
+    {
+        if (throwException)
+        {
+            std::logic_error constructionError("GenericDictionary::addAllDefinitions(): Errors Occured.");
+            throw constructionError;
+        }
+
+    }
 
     dictName nameNotFound;
     return nameNotFound;
 }
 
+/*
+ * This method is used when a default constructor has been used to create the object.
+ */
 template <typename dictID, typename dictName>
 bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions)
 {
@@ -210,6 +220,9 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dic
     return addAllDefinitions(definitions);
 }
 
+/*
+ * All the other addAllDefinitions() functions reference this function.
+ */
 template <typename dictID, typename dictName>
 bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::ranges::input_range auto&& definitions)
 {
@@ -229,6 +242,11 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::ranges::input_r
     if (noErrors)
     {
         noErrors = commonInternalListBuilder("addAllDefinitions()");
+        if (throwException)
+        {
+            std::logic_error constructionError("GenericDictionary::addAllDefinitions(): Errors Occured.");
+            throw constructionError;
+        }
     }
 
     return noErrors;
@@ -299,20 +317,20 @@ void GenericDictionary<dictID, dictName>::debugDumpData() const noexcept
  *****************************************************************************/
 
 template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string funcName)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string funcName) noexcept
 {
+    bool hasErrors = false;   
     if (missingIDSizeTest(funcName))
     {
-        return false;
+        hasErrors = true;
     }
 
-    bool hasErrors = false;   
     if (!testForIDNoneLinearDefinitions(funcName))
     {
         hasErrors = true;
     }
 
-    if (hasDuplicateNames(funcName))
+    if (reportDuplicateNameErrors(funcName))
     {
         hasErrors = true;
     }
@@ -322,6 +340,7 @@ template<typename dictID, typename dictName>
         return false;
     }
     
+    // Errors have been found, there is no need to add the definitions to the maps.
     for (auto newDef: userInputList)
     {
         if (!addDefinition(newDef))
@@ -334,7 +353,7 @@ template<typename dictID, typename dictName>
 }
 
 template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::sanityCheck(std::string funcName, std::string searchValue)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::sanityCheck(std::string funcName, std::string searchValue) noexcept
 {
     if (limitsNotSet(funcName, searchValue))
     {
@@ -350,14 +369,13 @@ template<typename dictID, typename dictName>
 }
 
 template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::limitsNotSet(std::string funcName, std::string searchValue)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::limitsNotSet(std::string funcName, std::string searchValue) noexcept
 {
-    std::string emsg("In GenericDictionary::" + funcName + " (" + searchValue +"): ");
-    emsg += "The minimum and maximum enum values have not been set.";
-
     if (!(static_cast<std::size_t>(MaximumValue) > static_cast<std::size_t>(MinimumValue)))
     {
-        reportErrorOrThrowExceptions(emsg);
+        std::string emsg("In GenericDictionary::" + funcName + " (" + searchValue +"): ");
+        emsg += "The minimum and maximum enum values have not been set.";
+        std::cerr << emsg << "\n";
         return true;
     }
 
@@ -365,14 +383,13 @@ template<typename dictID, typename dictName>
 }
 
 template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::searchTableNotInitialized(std::string funcName, std::string searchValue)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::searchTableNotInitialized(std::string funcName, std::string searchValue) noexcept
 {
-    std::string emsg("In GenericDictionary::" + funcName + " (" + searchValue +"): ");
-    emsg += "searchTable has not been initialized or sorted";
-
     if (idSearchTable.size() == 0 || nameSearchTable.size() == 0)
     {
-        reportErrorOrThrowExceptions(emsg);
+        std::string emsg("In GenericDictionary::" + funcName + " (" + searchValue +"): ");
+        emsg += "searchTable has not been initialized.";
+        std::cerr << emsg << "\n";
         return true;
     }
     return false;
@@ -415,7 +432,7 @@ template <typename dictID, typename dictName>
 }
 
 template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::missingIDSizeTest(std::string funcName)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::missingIDSizeTest(std::string funcName) noexcept
 {
     std::size_t expectedSize = static_cast<std::size_t>(MaximumValue);
     expectedSize -= 1;
@@ -423,7 +440,7 @@ template <typename dictID, typename dictName>
     {
         std::string emsg("In GenericDictionary::" + funcName + " missing definition values");
         emsg += " expected size " + std::to_string(expectedSize) + " actual size " + std::to_string(userInputList.size());
-        reportErrorOrThrowExceptions(emsg);
+        std::cerr << emsg << "\n";
         return true;
     }
 
@@ -445,7 +462,7 @@ template <typename dictID, typename dictName>
 }
 
 template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::hasDuplicateNames(std::string funcName)
+[[nodiscard]] bool GenericDictionary<dictID, dictName>::reportDuplicateNameErrors(std::string funcName) noexcept
 {
     std::vector<DictType> duplicates;
     // Find all duplicate names, store the name and the ID to generate an
@@ -471,26 +488,28 @@ template <typename dictID, typename dictName>
             std::to_string(static_cast<std::size_t>(duplicate.id)) + "\n\t";
     }
 
-    reportErrorOrThrowExceptions(emsg);
+    std::cerr << emsg << "\n";
 
     return true;
 }
 
+/*
+ * Find and report any missing or duplicated enums
+ */
 template <typename dictID, typename dictName>
 [[nodiscard]] bool GenericDictionary<dictID, dictName>::testForIDNoneLinearDefinitions(
     std::string funcName
-    )
+    ) noexcept
 {
     bool noErrors = true; 
     std::string emsg("In GenericDictionary::" + funcName + ": \n\t");
 
     noErrors = sortAndTestIds(emsg);
-    if (noErrors)
+    if (!noErrors)
     {
-        return noErrors;
+        std::cerr << emsg << "\n";
     }
 
-    reportErrorOrThrowExceptions(emsg);
 
     return noErrors;
 }
@@ -506,20 +525,6 @@ template <typename dictID, typename dictName>
     }
 
     return false;
-}
-
-template <typename dictID, typename dictName>
-void GenericDictionary<dictID, dictName>::reportErrorOrThrowExceptions(std::string eMsg)
-{
-    if (throwException)
-    {
-        std::logic_error orderError(eMsg);
-        throw orderError;
-    }
-    else
-    {
-        std::cerr << eMsg << "\n";
-    }
 }
 
 /******************************************************************************
