@@ -812,6 +812,62 @@ static bool limitsConstAddInitListMultiIDMultiName() noexcept
     return testPassed;
 }
 
+static bool defaultConThrowRuntimeErrorInAddVector()
+{
+    std::string dictionaryName("throwError");
+    std::string tname("Throw runtime Exception from addAllDefinitions");
+
+    std::string addTitle(dictionaryName +
+        ".addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, "
+         + "testVecMultiNameMultiID" + ")");
+
+    std::cout << "testing " << dictionaryName << " Default Constructor - " << tname << "\n";
+    GenericDictionary<TestAdditions, std::string> testDictionary;
+
+    std::cout << "testing " << "testDictionary.enableExceptions(true);" << "\n";
+    testDictionary.enableExceptions(true);
+
+    try
+    {
+        std::cout << "testing " << addTitle << "\n";
+
+    // Negative Path - error message expected
+        if (testDictionary.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, testVecMultiNameMultiID))
+        {
+            std::cerr << "testing " << addTitle << " FAILED\n";
+#ifdef DEBUG
+            testDictionary.debugDumpData();
+            testDictionary.debugDumpUserList();
+#endif
+            didConstructionWork(dictionaryName, testDictionary, 1);
+        }
+        else
+        {
+            std::cout << "testing " << addTitle << " PASSED\n\n";
+        }
+        std::cout.flush();
+    }
+    catch (const std::logic_error &le)
+    {
+        std::cout << "GenericDictionary addAllDefinitions threw expected std::logic_error: \n\t" << le.what() << "\n";
+        std::cout << "GenericDictionary Constructor Negative Path Test: Missing ID enum Missing Names: PASSED\n\n";
+        std::cout.flush();
+        return true;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "TestGenericDictionary::testContructorPositivePath() UNKNOWN EXCEPTION: " <<
+            e.what() << "\n\n";
+        std::cout.flush();
+        return false;
+    }
+    
+    std::cerr << "GenericDictionary Constructor Negative Path Test: Missing ID enum: FAILED\n\n";
+    std::cout.flush();
+
+    return false;
+}
+
 typedef bool (*testFunc)();
 static testFunc testFunctions[] =
 {
@@ -841,6 +897,7 @@ static testFunc testFunctions[] =
     limitsConstAddInitListMultiID,
     limitsConstAddInitListMultiName,
     limitsConstAddInitListMultiIDMultiName,
+    defaultConThrowRuntimeErrorInAddVector,
 };
 
 bool executeAllFuntionalTests() noexcept
