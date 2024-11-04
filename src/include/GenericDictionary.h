@@ -36,7 +36,7 @@
  * - Multiple constructors and a destructor have been added.
  * - The lists are checked for missing definitions and duplicate definitions
  * - The class is no longer abstract
- * - dicID became dictID and dicName became dictName
+ * - dicID became DictID and dicName became DictName
  * - The struct used by the constructor now has a template GenricDictionaryDataPair.
  * - The unit test code has been added to this file to ease maintenance.
  * - The code for all the methods and constructors have been moved into template specializations.
@@ -47,18 +47,18 @@
 /******************************************************************************
  * Data structures and class Declarations
  *****************************************************************************/
-template <typename dictID, typename dictName>
+template <typename DictID, typename DictName>
 struct GenricDictionaryDataPair
 {
-    dictID id;
-    dictName names;
+    DictID id;
+    DictName names;
 };
 
-template <typename dictID, typename dictName>
+template <typename DictID, typename DictName>
 class GenericDictionary
 {
 public:
-    using DictType = GenricDictionaryDataPair<dictID, dictName>;
+    using DictType = GenricDictionaryDataPair<DictID, DictName>;
 
 // Both the MinValue and MaxValue should be invalid values
 // Example
@@ -71,22 +71,22 @@ public:
 
 // Safe constructor that will not throw exceptions, but the search table is
 // not initialized.
-    GenericDictionary(dictID MinValue, dictID MaxValue)
+    GenericDictionary(DictID MinValue, DictID MaxValue)
     : MinimumValue{MinValue},
       MaximumValue{MaxValue}
       {};
 // The following constructors will throw exceptions if there are problems in the
 // list of definitions.
-    GenericDictionary(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions);
-    GenericDictionary(dictID MinValue, dictID MaxValue, std::vector<DictType> definitions);
+    GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
+    GenericDictionary(DictID MinValue, DictID MaxValue, std::vector<DictType> definitions);
     virtual ~GenericDictionary() = default;
 
-    virtual dictID getIds(dictName itemName);
-    virtual dictName getNames(dictID id);
+    virtual DictID getIds(DictName itemName);
+    virtual DictName getNames(DictID id);
     bool addAllDefinitions(std::ranges::input_range auto&& definitions);
-    bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions);
+    bool addAllDefinitions(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
     bool addAllDefinitions(std::initializer_list<DictType> definitions);
-    bool addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions);
+    bool addAllDefinitions(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
     void enableExceptions(bool exceptionsEnabled) { throwException = exceptionsEnabled; };
 
 #ifdef GD_UNIT_TEST
@@ -100,13 +100,13 @@ public:
     void debugDumpList(std::vector<DictType> candidate) noexcept;
 #endif // DEBUG
 
-protected:
+private:
     [[nodiscard]] bool commonInternalListBuilder(std::string funcName) noexcept;
     [[nodiscard]] bool alreadyDefined(DictType candidate) noexcept { return hasID(candidate.id) || hasName(candidate.names); };
     [[nodiscard]] bool missingIDSizeTest(std::string funcName) noexcept;
     [[nodiscard]] bool reportDuplicateNameErrors(std::string funcName) noexcept;
-    [[nodiscard]] bool hasID(dictID id) noexcept;
-    [[nodiscard]] bool hasName(dictName name) noexcept;
+    [[nodiscard]] bool hasID(DictID id) noexcept;
+    [[nodiscard]] bool hasName(DictName name) noexcept;
     [[nodiscard]] bool limitsNotSet(std::string funcName, std::string searchValue) noexcept;
     [[nodiscard]] bool sanityCheck(std::string funcName, std::string searchValue) noexcept;
     [[nodiscard]] bool searchTableNotInitialized(std::string funcName, std::string searchValue) noexcept;
@@ -118,11 +118,11 @@ protected:
  * Don't change the order of the following 2 member variables since they
  * are set in contructors and the order is important.
  */
-    dictID MinimumValue;
-    dictID MaximumValue;
+    DictID MinimumValue;
+    DictID MaximumValue;
 
-    std::unordered_map<dictID, dictName> idSearchTable;
-    std::unordered_map<dictName, dictID> nameSearchTable;
+    std::unordered_map<DictID, DictName> idSearchTable;
+    std::unordered_map<DictName, DictID> nameSearchTable;
     std::vector<DictType> userInputList;
     bool throwException = false;
 };
@@ -130,8 +130,8 @@ protected:
 /******************************************************************************
  * Public interface specializations.
  *****************************************************************************/
-template <typename dictID, typename dictName>
-GenericDictionary<dictID, dictName>::GenericDictionary(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions)
+template <typename DictID, typename DictName>
+GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions)
 : MinimumValue{MinValue},
 MaximumValue{MaxValue}
 {
@@ -147,8 +147,8 @@ MaximumValue{MaxValue}
     }
 }
 
-template <typename dictID, typename dictName>
-GenericDictionary<dictID, dictName>::GenericDictionary(dictID MinValue, dictID MaxValue, std::vector<DictType> definitions)
+template <typename DictID, typename DictName>
+GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::vector<DictType> definitions)
 : MinimumValue{MinValue},
 MaximumValue{MaxValue},
 userInputList{definitions}
@@ -160,8 +160,8 @@ userInputList{definitions}
     }
 }
 
-template <typename dictID, typename dictName>
-dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
+template <typename DictID, typename DictName>
+DictID GenericDictionary<DictID, DictName>::getIds(DictName itemName)
 {
     if (sanityCheck("getIds", "name value"))
     {
@@ -181,11 +181,11 @@ dictID GenericDictionary<dictID, dictName>::getIds(dictName itemName)
 
     }
 
-    return static_cast<dictID>(MinimumValue);
+    return static_cast<DictID>(MinimumValue);
 };
 
-template <typename dictID, typename dictName>
-dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
+template <typename DictID, typename DictName>
+DictName GenericDictionary<DictID, DictName>::getNames(DictID id)
 {
     if (sanityCheck("getNames", "enum value") && (MinimumValue < id && id < MaximumValue))
     {
@@ -205,15 +205,15 @@ dictName GenericDictionary<dictID, dictName>::getNames(dictID id)
 
     }
 
-    dictName nameNotFound;
+    DictName nameNotFound;
     return nameNotFound;
 }
 
 /*
  * This method is used when a default constructor has been used to create the object.
  */
-template <typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dictID MaxValue, std::ranges::input_range auto&& definitions)
+template <typename DictID, typename DictName>
+bool GenericDictionary<DictID, DictName>::addAllDefinitions(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions)
 {
     MinimumValue = MinValue;
     MaximumValue = MaxValue;
@@ -223,8 +223,8 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dic
 /*
  * All the other addAllDefinitions() functions reference this function.
  */
-template <typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::ranges::input_range auto&& definitions)
+template <typename DictID, typename DictName>
+bool GenericDictionary<DictID, DictName>::addAllDefinitions(std::ranges::input_range auto&& definitions)
 {
     bool noErrors = true;
 
@@ -252,8 +252,8 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::ranges::input_r
     return noErrors;
 }
 
-template <typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::initializer_list<DictType> definitions)
+template <typename DictID, typename DictName>
+bool GenericDictionary<DictID, DictName>::addAllDefinitions(std::initializer_list<DictType> definitions)
 {
     std::vector<DictType> tmpMap;
 
@@ -265,8 +265,8 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(std::initializer_lis
     return addAllDefinitions(tmpMap);
 }
 
-template <typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dictID MaxValue, std::initializer_list<DictType> definitions)
+template <typename DictID, typename DictName>
+bool GenericDictionary<DictID, DictName>::addAllDefinitions(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions)
 {
     std::vector<DictType> tmpMap;
 
@@ -279,8 +279,8 @@ bool GenericDictionary<dictID, dictName>::addAllDefinitions(dictID MinValue, dic
 }
 
 #ifdef DEBUG
-template <typename dictID, typename dictName>
-void GenericDictionary<dictID, dictName>::debugDumpList(std::vector<DictType> toDump) noexcept
+template <typename DictID, typename DictName>
+void GenericDictionary<DictID, DictName>::debugDumpList(std::vector<DictType> toDump) noexcept
 {
     for (auto searchItem: toDump)
     {
@@ -289,8 +289,8 @@ void GenericDictionary<dictID, dictName>::debugDumpList(std::vector<DictType> to
     }
 }
 
-template <typename dictID, typename dictName>
-void GenericDictionary<dictID, dictName>::debugDumpData() const noexcept
+template <typename DictID, typename DictName>
+void GenericDictionary<DictID, DictName>::debugDumpData() const noexcept
 {
     std::cerr << "\n\nGenericDictionary::Debug Dump Data\n";
     std::cerr << "\tMinimumValue: " << static_cast<std::size_t>(MinimumValue) << "\n";
@@ -316,8 +316,8 @@ void GenericDictionary<dictID, dictName>::debugDumpData() const noexcept
  * Protected/Private methods
  *****************************************************************************/
 
-template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::commonInternalListBuilder(std::string funcName) noexcept
+template<typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::commonInternalListBuilder(std::string funcName) noexcept
 {
     bool hasErrors = false;   
     if (missingIDSizeTest(funcName))
@@ -352,8 +352,8 @@ template<typename dictID, typename dictName>
     return true;
 }
 
-template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::sanityCheck(std::string funcName, std::string searchValue) noexcept
+template<typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::sanityCheck(std::string funcName, std::string searchValue) noexcept
 {
     if (limitsNotSet(funcName, searchValue))
     {
@@ -368,8 +368,8 @@ template<typename dictID, typename dictName>
     return true;
 }
 
-template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::limitsNotSet(std::string funcName, std::string searchValue) noexcept
+template<typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::limitsNotSet(std::string funcName, std::string searchValue) noexcept
 {
     if (!(static_cast<std::size_t>(MaximumValue) > static_cast<std::size_t>(MinimumValue)))
     {
@@ -382,8 +382,8 @@ template<typename dictID, typename dictName>
     return false;
 }
 
-template<typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::searchTableNotInitialized(std::string funcName, std::string searchValue) noexcept
+template<typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::searchTableNotInitialized(std::string funcName, std::string searchValue) noexcept
 {
     if (idSearchTable.size() == 0 || nameSearchTable.size() == 0)
     {
@@ -400,8 +400,8 @@ template<typename dictID, typename dictName>
  * on the validity of the input, finding duplicate IDs or missing IDs. The
  * input must be sorted before the the error checking can be performed.
  */
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::sortAndTestIds(std::string& emsg) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::sortAndTestIds(std::string& emsg) noexcept
 {
     std::sort(userInputList.begin(), userInputList.end(),
         [](DictType defIter1, DictType defIter2) {return  defIter1.id < defIter2.id;});
@@ -431,8 +431,8 @@ template <typename dictID, typename dictName>
     return noErrors;
 }
 
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::missingIDSizeTest(std::string funcName) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::missingIDSizeTest(std::string funcName) noexcept
 {
     std::size_t expectedSize = static_cast<std::size_t>(MaximumValue);
     expectedSize -= 1;
@@ -447,22 +447,22 @@ template <typename dictID, typename dictName>
     return false;
 }
 
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::hasID(dictID id) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::hasID(DictID id) noexcept
 {
     auto found = idSearchTable.find(id);
     return (found != idSearchTable.end());
 }
 
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::hasName(dictName name) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::hasName(DictName name) noexcept
 {
     auto found = nameSearchTable.find(name);
     return (found != nameSearchTable.end());
 }
 
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::reportDuplicateNameErrors(std::string funcName) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::reportDuplicateNameErrors(std::string funcName) noexcept
 {
     std::vector<DictType> duplicates;
     // Find all duplicate names, store the name and the ID to generate an
@@ -496,8 +496,8 @@ template <typename dictID, typename dictName>
 /*
  * Find and report any missing or duplicated enums
  */
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::testForIDNoneLinearDefinitions(
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::testForIDNoneLinearDefinitions(
     std::string funcName
     ) noexcept
 {
@@ -514,8 +514,8 @@ template <typename dictID, typename dictName>
     return noErrors;
 }
 
-template <typename dictID, typename dictName>
-[[nodiscard]] bool GenericDictionary<dictID, dictName>::addDefinition(DictType newDef) noexcept
+template <typename DictID, typename DictName>
+[[nodiscard]] bool GenericDictionary<DictID, DictName>::addDefinition(DictType newDef) noexcept
 {
     if (!alreadyDefined(newDef))
     {
@@ -540,8 +540,8 @@ template <typename dictID, typename dictName>
 #ifdef GD_UNIT_TEST
 #include <iostream>
 
-template <typename dictID, typename dictName>
-bool GenericDictionary<dictID, dictName>::selfUnitTest()
+template <typename DictID, typename DictName>
+bool GenericDictionary<DictID, DictName>::selfUnitTest()
 {
 
     return true;
