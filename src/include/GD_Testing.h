@@ -5,20 +5,16 @@
 #include <string>
 #include <vector>
 
-#ifdef GD_PERFORMANCE_TEST
-#define GD_UNIT_TEST
-#endif // GD_PERFORMANCE_TEST
-
 /******************************************************************************
  * Unit testing and performance testing of the GenericDictinary class
  ******************************************************************************/
 
 #ifdef GD_PERFORMANCE_TEST
 #include "UtilityTimer.h"
+#define GD_UNIT_TEST
 #endif // GD_PERFORMANCE_TEST
 
 #ifdef GD_UNIT_TEST
-#include <iostream>
 
 template <typename enumDictType>
 static bool testIdToName(
