@@ -1,6 +1,7 @@
 #define GD_PERFORMANCE_TEST
 #include <exception>
 #include "../../include/GenericDictionary.h"
+#include "../../include/GD_Testing.h"
 #include <iostream>
 #include <stdexcept>
 #include <string>
