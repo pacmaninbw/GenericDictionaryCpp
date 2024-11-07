@@ -11,126 +11,126 @@
 #include <string>
 #include <vector>
 
-enum class TestAdditions
+enum class TestFunctionalityEnumDict
 {
 	NewAdd_Invalid_enum_Value,
-	NewAddValue_1,
-	NewAddValue_2,
-	NewAddValue_3,
-	NewAddValue_4,
-	NewAddValue_5,
-	NewAddValue_6,
-	NewAddValue_7,
-	NewAddValue_8,
-	NewAddValue_9,
-	NewAddValue_10,
-	NewAddValue_11,
-	NewAddValue_12,
-	NewAddValue_13,
-	NewAddValue_14,
-	NewAddValue_15,
-	NewAddValue_16,
+	FunctionalTest_1,
+	FunctionalTest_2,
+	FunctionalTest_3,
+	FunctionalTest_4,
+	FunctionalTest_5,
+	FunctionalTest_6,
+	FunctionalTest_7,
+	FunctionalTest_8,
+	FunctionalTest_9,
+	FunctionalTest_10,
+	FunctionalTest_11,
+	FunctionalTest_12,
+	FunctionalTest_13,
+	FunctionalTest_14,
+	FunctionalTest_15,
+	FunctionalTest_16,
 	NewAddLast_Enum
 };
 
 /*
  * Positive Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> newAddtestVec = 
+static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> newAddtestVec = 
 {
-	{TestAdditions::NewAddValue_1, "New funct 1"},
-	{TestAdditions::NewAddValue_2, "New funct 2"},
-	{TestAdditions::NewAddValue_3, "New funct 3"},
-	{TestAdditions::NewAddValue_4, "New funct 4"},
-	{TestAdditions::NewAddValue_5, "New funct 5"},
-	{TestAdditions::NewAddValue_6, "New funct 6"},
-	{TestAdditions::NewAddValue_7, "New funct 7"},
-	{TestAdditions::NewAddValue_8, "New funct 8"},
-	{TestAdditions::NewAddValue_9, "New funct 9"},
-	{TestAdditions::NewAddValue_10, "New funct 10"},
-	{TestAdditions::NewAddValue_11, "New funct 11"},
-	{TestAdditions::NewAddValue_12, "New funct 12"},
-	{TestAdditions::NewAddValue_13, "New funct 13"},
-	{TestAdditions::NewAddValue_14, "New funct 14"},
-	{TestAdditions::NewAddValue_15, "New funct 15"},
-	{TestAdditions::NewAddValue_16, "New funct 16"}
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
+	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+	{TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
+	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
+	{TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 11"},
+	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 12"},
+	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+	{TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
+	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
 };
 
 /*
  * Negative Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVecMultiNameMultiID = 
+static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiNameMultiID = 
 {
-	{TestAdditions::NewAddValue_1, "New funct 1"},
-	{TestAdditions::NewAddValue_2, "New funct 2"},
-	{TestAdditions::NewAddValue_5, "New funct 2"},
-	{TestAdditions::NewAddValue_4, "New funct 5"},
-	{TestAdditions::NewAddValue_5, "New funct 5"},
-	{TestAdditions::NewAddValue_6, "New funct 6"},
-	{TestAdditions::NewAddValue_7, "New funct 7"},
-	{TestAdditions::NewAddValue_8, "New funct 8"},
-	{TestAdditions::NewAddValue_10, "New funct 9"},
-	{TestAdditions::NewAddValue_10, "New funct 10"},
-	{TestAdditions::NewAddValue_11, "New funct 1"},
-	{TestAdditions::NewAddValue_12, "New funct 2"},
-	{TestAdditions::NewAddValue_13, "New funct 13"},
-	{TestAdditions::NewAddValue_14, "New funct 14"},
-	{TestAdditions::NewAddValue_15, "New funct 15"},
-	{TestAdditions::NewAddValue_16, "New funct 6"}
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 9"},
+	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
+	{TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+	{TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
+	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVecMultiName = 
+static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiName = 
 {
-	{TestAdditions::NewAddValue_1, "New funct 1"},
-	{TestAdditions::NewAddValue_2, "New funct 2"},
-	{TestAdditions::NewAddValue_3, "New funct 3"},
-	{TestAdditions::NewAddValue_4, "New funct 4"},
-	{TestAdditions::NewAddValue_5, "New funct 5"},
-	{TestAdditions::NewAddValue_6, "New funct 6"},
-	{TestAdditions::NewAddValue_7, "New funct 7"},
-	{TestAdditions::NewAddValue_8, "New funct 8"},
-	{TestAdditions::NewAddValue_9, "New funct 9"},
-	{TestAdditions::NewAddValue_10, "New funct 10"},
-	{TestAdditions::NewAddValue_11, "New funct 1"},
-	{TestAdditions::NewAddValue_12, "New funct 2"},
-	{TestAdditions::NewAddValue_13, "New funct 13"},
-	{TestAdditions::NewAddValue_14, "New funct 14"},
-	{TestAdditions::NewAddValue_15, "New funct 15"},
-	{TestAdditions::NewAddValue_16, "New funct 6"}
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
+	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+	{TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
+	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
+	{TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+	{TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
+	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVecMultiID = 
+static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiID = 
 {
-	{TestAdditions::NewAddValue_1, "New funct 1"},
-	{TestAdditions::NewAddValue_2, "New funct 2"},
-	{TestAdditions::NewAddValue_3, "New funct 3"},
-	{TestAdditions::NewAddValue_4, "New funct 4"},
-	{TestAdditions::NewAddValue_5, "New funct 5"},
-	{TestAdditions::NewAddValue_6, "New funct 6"},
-	{TestAdditions::NewAddValue_7, "New funct 7"},
-	{TestAdditions::NewAddValue_8, "New funct 8"},
-	{TestAdditions::NewAddValue_9, "New funct 9"},
-	{TestAdditions::NewAddValue_1, "New funct 10"},
-	{TestAdditions::NewAddValue_2, "New funct 11"},
-	{TestAdditions::NewAddValue_12, "New funct 12"},
-	{TestAdditions::NewAddValue_13, "New funct 13"},
-	{TestAdditions::NewAddValue_14, "New funct 14"},
-	{TestAdditions::NewAddValue_5, "New funct 15"},
-	{TestAdditions::NewAddValue_16, "New funct 16"}
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
+	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+	{TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 10"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 11"},
+	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 12"},
+	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 15"},
+	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
 };
 
 static bool didConstructionWork(
     std::string testName,
-    GenericDictionary<TestAdditions, std::string>& dictionary,
+    GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
     std::size_t itemToTest
 ) noexcept
 {
     bool testPassed = true;
-    std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> userInput = dictionary.getUserInput();
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> userInput = dictionary.getUserInput();
     std::size_t idIntVal = static_cast<std::size_t>(userInput[itemToTest].id);
     std::string strVal = userInput[itemToTest].names;
 
-    std::cout << "\ttesting " << testName << ".getNames(" << idIntVal << "), expected output is " << strVal << "\n";
+    std::clog << "\ttesting " << testName << ".getNames(" << idIntVal << "), expected output is " << strVal << "\n";
     if (dictionary.getNames(userInput[itemToTest].id) != strVal)
     {
         std::cerr << "\t" << testName << ".getNames(" << idIntVal << ") FAILED\n";
@@ -138,10 +138,10 @@ static bool didConstructionWork(
     }
     else
     {
-        std::cout << "\t" << testName << ".getNames(" << idIntVal << ") PASSED\n";
+        std::clog << "\t" << testName << ".getNames(" << idIntVal << ") PASSED\n";
     }
 
-    std::cout << "\ttesting " << testName << ".getIds(" << strVal << "), expected output is "
+    std::clog << "\ttesting " << testName << ".getIds(" << strVal << "), expected output is "
     << idIntVal << "\n";
 
     if (dictionary.getIds(strVal) != userInput[itemToTest].id)
@@ -151,753 +151,326 @@ static bool didConstructionWork(
     }
     else
     {
-        std::cout << "\t" << testName << ".getIds(" << strVal << ") PASSED\n";
+        std::clog << "\t" << testName << ".getIds(" << strVal << ") PASSED\n";
     }
 
     return testPassed;
 }
 
-static bool defaultExpectFailureRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
+static bool ConstructorInitializerListSuccess() noexcept
 {
     bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        ".addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, "
-         + rangeName + ")");
-
-    std::cout << "testing " << dictionaryName << " Default Constructor - " << tname << "\n";
-    GenericDictionary<TestAdditions, std::string> testDictionary;
-    std::cout << "testing " << addTitle << "\n";
-
-// Negative Path - error message expected
-    if (testDictionary.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, testRange))
-    {
-        std::cerr << "testing " << addTitle << " FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
-        didConstructionWork(dictionaryName, testDictionary, 1);
-    }
-    else
-    {
-        std::cout << "testing " << addTitle << " PASSED\n\n";
-        testPassed = true;
-    }
-
-    std::cout.flush();
-
-    return testPassed;
-}
-
-static bool defaultExpectSuccessRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
-{
-    bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        ".addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, "
-         + rangeName + ")");
-
-    std::cout << "testing " << dictionaryName << " Default Constructor - " << tname << "\n";
-    GenericDictionary<TestAdditions, std::string> testDictionary;
-
-    std::cout << "testing " << addTitle << "\n";
-    if (testDictionary.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, testRange))
-    {
-        testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
-        if (testPassed)
-        {
-            std::cout << "testing " << addTitle << " PASSED\n\n";
-        }
-    }
-    else
-    {
-        std::cerr << "testing " << addTitle << " FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
-    }
-
-    return testPassed;
-}
-
-static bool limitsExpectFailureRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
-{
-    bool testPassed = true;
-    std::string addTitle(dictionaryName + ".addAllDefinitions(" + rangeName + ")");
-
-    std::cout << "testing " << dictionaryName << " Limits Only Constructor - " << tname << "\n";
-    GenericDictionary<TestAdditions, std::string> testDictionary(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing " << addTitle << "\n";
-
-// Negative Path - error message expected
-    if (testDictionary.addAllDefinitions(testRange))
-    {
-        std::cerr << "testing " << addTitle << " FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
-        didConstructionWork(dictionaryName, testDictionary, 1);
-    }
-    else
-    {
-        std::cout << "testing " << addTitle << " PASSED\n\n";
-        testPassed = true;
-    }
-
-    std::cout.flush();
-
-    return testPassed;
-}
-
-static bool limitsExpectSuccessRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
-{
-    bool testPassed = true;
-    std::string addTitle(dictionaryName + ".addAllDefinitions(" + rangeName + ")");
-
-    std::cout << "testing " << dictionaryName << " Limits Only Constructor - " << tname << "\n";
-    GenericDictionary<TestAdditions, std::string> testDictionary(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing " << addTitle << "\n";
-    if (testDictionary.addAllDefinitions(testRange))
-    {
-        testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
-        if (testPassed)
-        {
-            std::cout << "testing " << addTitle << " PASSED\n\n";
-        }
-    }
-    else
-    {
-        std::cerr << "testing " << addTitle << " FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
-    }
-
-    return testPassed;
-}
-
-static bool defaultExpectSuccessArray(
-    std::string dictionaryName,
-    std::string tname,
-    std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVec
-) noexcept
-{
-	std::array<GenricDictionaryDataPair<TestAdditions, std::string>,16> testArray;
-    std::size_t i = 0;
-	for (auto tdata: testVec)
-	{
-		testArray[i] = tdata;
-        ++i;
-	}
-
-    return defaultExpectSuccessRange(dictionaryName, tname, rangeName, testArray);
-}
-
-static bool defaultExpectFailArray(
-    std::string dictionaryName,
-    std::string tname,
-    std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVec
-) noexcept
-{
-	std::array<GenricDictionaryDataPair<TestAdditions, std::string>,16> testArray;
-    std::size_t i = 0;
-	for (auto tdata: testVec)
-	{
-		testArray[i] = tdata;
-        ++i;
-	}
-
-    return defaultExpectFailureRange(dictionaryName, tname, rangeName, testArray);
-}
-
-static bool limitsExpectSuccessArray(
-    std::string dictionaryName,
-    std::string tname,
-    std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVec
-) noexcept
-{
-	std::array<GenricDictionaryDataPair<TestAdditions, std::string>,16> testArray;
-    std::size_t i = 0;
-	for (auto tdata: testVec)
-	{
-		testArray[i] = tdata;
-        ++i;
-	}
-
-    return limitsExpectSuccessRange(dictionaryName, tname, rangeName, testArray);
-}
-
-static bool limitsExpectFailArray(
-    std::string dictionaryName,
-    std::string tname,
-    std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestAdditions, std::string>> testVec
-) noexcept
-{
-	std::array<GenricDictionaryDataPair<TestAdditions, std::string>,16> testArray;
-    std::size_t i = 0;
-	for (auto tdata: testVec)
-	{
-		testArray[i] = tdata;
-        ++i;
-	}
-
-    return limitsExpectFailureRange(dictionaryName, tname, rangeName, testArray);
-}
-
-static bool defaultConstructorSelfTests() noexcept
-{
-    bool testPassed = true;
-
-    return testPassed;
-}
-
-static bool defaultConstructorAddVector() noexcept
-{
-    return defaultExpectSuccessRange("testMyNewAdditions", "Adding definitions by vector", "newAddtestVec", newAddtestVec);
-}
-
-static bool defaultConstructorAddArray() noexcept
-{
-    return defaultExpectSuccessArray("testArray", "Adding definitions by array", "newAddArray", newAddtestVec);
-}
-
-static bool limitsConstructorAddVector() noexcept
-{
-    return limitsExpectSuccessRange("testVector", "add definitions by vector", "newAddtestVec", newAddtestVec);
-}
-
-static bool limitsConstructorAddArray() noexcept
-{
-    return limitsExpectSuccessArray("testArray", "add definitions by array", "newAddArray", newAddtestVec);
-}
-
-static bool defaultConstAddVecMultiID() noexcept
-{
-    return (defaultExpectFailureRange("AddultiID", "Duplicate IDs", "testVecMultiID", testVecMultiID));
-}
-
-static bool defaultConstAddVecMultiName() noexcept
-{
-    return (defaultExpectFailureRange("AddultiName", "Duplicate Names", "testVecMultiName", testVecMultiName));
-}
-
-static bool defaultConstAddVecMultiIDMultiName() noexcept
-{
-    return (defaultExpectFailureRange("AddultiNameID", "Duplicate Names Duplicate IDs", "testVecMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool defaultConstAddArrMultiID() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiID", "Duplicate IDs", "testArrayMultiID", testVecMultiID));
-}
-
-static bool defaultConstAddArrMultiName() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiName", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
-}
-
-static bool defaultConstAddArrMultiIDMultiName() noexcept
-{
-    return (defaultExpectFailArray("AddArrayMultiIdMultiName", "Duplicate Names Duplicate IDs in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool limitsConstAddVecMultiID() noexcept
-{
-    return (limitsExpectFailureRange("AddVecMultiID", "Duplicate IDs in Array", "testVecMultiID", testVecMultiID));
-}
-
-static bool limitsConstAddVecMultiName() noexcept
-{
-    return (limitsExpectFailureRange("AddVectorMultiNames", "Duplicate Names in Vector", "testVecMultiName", testVecMultiName));
-}
-
-static bool limitsConstAddVecMultiIDMultiName() noexcept
-{
-    return (limitsExpectFailureRange("AddVectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testVecMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool limitsConstAddArrMultiID() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiID", "Duplicate IDs in Array", "testArrayMultiID", testVecMultiID));
-}
-
-static bool limitsConstAddArrMultiName() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiNames", "Duplicate Names in Array", "testArrMultiName", testVecMultiName));
-}
-
-static bool limitsConstAddArrMultiIDMultiName() noexcept
-{
-    return (limitsExpectFailArray("AddArrayMultiIDMultiNames", "Duplicate IDs Duplicate Names in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
-}
-
-static bool defaultConstructorAddInitializerList() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "testing usingInitList addAllDefinitions() Default Constructor\n";
-    GenericDictionary<TestAdditions, std::string> usingInitList;
-    std::cout << "testing usingInitList.addAllDefinitions(invalid_id, last_id, initialization list)\n";
-    if (usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum,
-    {
-		{TestAdditions::NewAddValue_1, "New funct 1"},
-		{TestAdditions::NewAddValue_2, "New funct 2"},
-		{TestAdditions::NewAddValue_3, "New funct 3"},
-		{TestAdditions::NewAddValue_4, "New funct 4"},
-		{TestAdditions::NewAddValue_5, "New funct 5"},
-		{TestAdditions::NewAddValue_6, "New funct 6"},
-		{TestAdditions::NewAddValue_7, "New funct 7"},
-		{TestAdditions::NewAddValue_8, "New funct 8"},
-		{TestAdditions::NewAddValue_9, "New funct 9"},
-		{TestAdditions::NewAddValue_10, "New funct 10"},
-		{TestAdditions::NewAddValue_11, "New funct 11"},
-		{TestAdditions::NewAddValue_12, "New funct 12"},
-		{TestAdditions::NewAddValue_13, "New funct 13"},
-		{TestAdditions::NewAddValue_14, "New funct 14"},
-		{TestAdditions::NewAddValue_15, "New funct 15"},
-		{TestAdditions::NewAddValue_16, "New funct 16"}}
-	))
-    {
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-        if (testPassed)
-        {
-            std::cout << "testing usingInitList.addAllDefinitions(invalid_id, last_id, initialization list) PASSED\n";
-        }
-    }
-    else
-    {
-        std::cerr << "testing usingInitList.addAllDefinitions(initialization list) FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-    }
-
-    std::cout << "\n";
-
-    return testPassed;
-}
-
-static bool limitsConstructorAddInitializerList() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting usingInitList addAllDefinitions() Limits Only Constructor\n";
-    GenericDictionary<TestAdditions, std::string> usingInitList(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing usingInitList.addAllDefinitions(initialization list)\n";
-    if (usingInitList.addAllDefinitions({
-		{TestAdditions::NewAddValue_1, "New funct 1"},
-		{TestAdditions::NewAddValue_2, "New funct 2"},
-		{TestAdditions::NewAddValue_3, "New funct 3"},
-		{TestAdditions::NewAddValue_4, "New funct 4"},
-		{TestAdditions::NewAddValue_5, "New funct 5"},
-		{TestAdditions::NewAddValue_6, "New funct 6"},
-		{TestAdditions::NewAddValue_7, "New funct 7"},
-		{TestAdditions::NewAddValue_8, "New funct 8"},
-		{TestAdditions::NewAddValue_9, "New funct 9"},
-		{TestAdditions::NewAddValue_10, "New funct 10"},
-		{TestAdditions::NewAddValue_11, "New funct 11"},
-		{TestAdditions::NewAddValue_12, "New funct 12"},
-		{TestAdditions::NewAddValue_13, "New funct 13"},
-		{TestAdditions::NewAddValue_14, "New funct 14"},
-		{TestAdditions::NewAddValue_15, "New funct 15"},
-		{TestAdditions::NewAddValue_16, "New funct 16"}}
-	))
-    {
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-        if (testPassed)
-        {
-            std::cout << "testing usingInitList.addAllDefinitions(initialization list) PASSED\n";
-        }
-    }
-    else
-    {
-        std::cerr << "testing usingInitList.addAllDefinitions(initialization list) FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-    }
-
-    std::cout << "\n";
-
-    return testPassed;
-}
-
-static bool defaultConstAddInitListMultiID() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions() Default Constructor Multiple IDs in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList;
-    std::cout << "testing usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum,initialization list)\n";
-    if (usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, {
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_3, "New funct 3"},
-        {TestAdditions::NewAddValue_4, "New funct 4"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_9, "New funct 9"},
-        {TestAdditions::NewAddValue_1, "New funct 10"},
-        {TestAdditions::NewAddValue_2, "New funct 11"},
-        {TestAdditions::NewAddValue_12, "New funct 12"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_5, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 16"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Default Constructor Multiple IDs in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions() Default Constructor Multiple IDs Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool defaultConstAddInitListMultiName() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions() Default Constructor Multiple Names in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList;
-    std::cout << "testing usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum,initialization list)\n";
-    if (usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, {
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_5, "New funct 2"},
-        {TestAdditions::NewAddValue_4, "New funct 5"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_10, "New funct 9"},
-        {TestAdditions::NewAddValue_10, "New funct 10"},
-        {TestAdditions::NewAddValue_11, "New funct 1"},
-        {TestAdditions::NewAddValue_12, "New funct 2"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_15, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 6"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Default Constructor Multiple Names in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions() Default Constructor Multiple Names Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool defaultConstAddInitListMultiIDMultiName() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions() Default Constructor Multiple IDs Multiple Names in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList;
-    std::cout << "testing usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum,initialization list)\n";
-    if (usingInitList.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, {
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_3, "New funct 3"},
-        {TestAdditions::NewAddValue_4, "New funct 4"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_9, "New funct 9"},
-        {TestAdditions::NewAddValue_10, "New funct 10"},
-        {TestAdditions::NewAddValue_11, "New funct 1"},
-        {TestAdditions::NewAddValue_12, "New funct 2"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_15, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 6"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Default Constructor Muliple IDs Multiple Names in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions() Default Constructor Multiple IDs Multiple Names Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool limitsConstAddInitListMultiID() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions() Limits Only Constructor Multiple IDs in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing usingInitList.addAllDefinitions(initialization list)\n";
-    if (usingInitList.addAllDefinitions({
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_3, "New funct 3"},
-        {TestAdditions::NewAddValue_4, "New funct 4"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_9, "New funct 9"},
-        {TestAdditions::NewAddValue_1, "New funct 10"},
-        {TestAdditions::NewAddValue_2, "New funct 11"},
-        {TestAdditions::NewAddValue_12, "New funct 12"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_5, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 16"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Limits Only  Constructor Multiple IDs in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions() Limits Only  Constructor Multiple IDs Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool limitsConstAddInitListMultiName() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions() Limits Only Constructor Multiple Names in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing usingInitList.addAllDefinitions(initialization list)\n";
-    if (usingInitList.addAllDefinitions({
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_5, "New funct 2"},
-        {TestAdditions::NewAddValue_4, "New funct 5"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_10, "New funct 9"},
-        {TestAdditions::NewAddValue_10, "New funct 10"},
-        {TestAdditions::NewAddValue_11, "New funct 1"},
-        {TestAdditions::NewAddValue_12, "New funct 2"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_15, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 6"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Limits Only Constructor Multiple Names in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions() Limits Only Constructor Multiple Names Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool limitsConstAddInitListMultiIDMultiName() noexcept
-{
-    bool testPassed = true;
-
-    std::cout << "\ntesting addAllDefinitions()  Limits Only Constructor Multiple IDs Multiple Names in Initialization List \n";
-    GenericDictionary<TestAdditions, std::string> usingInitList(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum);
-    std::cout << "testing usingInitList.addAllDefinitions(initialization list)\n";
-    if (usingInitList.addAllDefinitions({
-        {TestAdditions::NewAddValue_1, "New funct 1"},
-        {TestAdditions::NewAddValue_2, "New funct 2"},
-        {TestAdditions::NewAddValue_3, "New funct 3"},
-        {TestAdditions::NewAddValue_4, "New funct 4"},
-        {TestAdditions::NewAddValue_5, "New funct 5"},
-        {TestAdditions::NewAddValue_6, "New funct 6"},
-        {TestAdditions::NewAddValue_7, "New funct 7"},
-        {TestAdditions::NewAddValue_8, "New funct 8"},
-        {TestAdditions::NewAddValue_9, "New funct 9"},
-        {TestAdditions::NewAddValue_10, "New funct 10"},
-        {TestAdditions::NewAddValue_11, "New funct 1"},
-        {TestAdditions::NewAddValue_12, "New funct 2"},
-        {TestAdditions::NewAddValue_13, "New funct 13"},
-        {TestAdditions::NewAddValue_14, "New funct 14"},
-        {TestAdditions::NewAddValue_15, "New funct 15"},
-        {TestAdditions::NewAddValue_16, "New funct 6"}
-    }))
-    {
-        std::cerr << "testing using InitList addAllDefinitions() Limits Only Constructor Muliple IDs Multiple Names in Initialization List FAILED\n";
-        testPassed = false;
-#ifdef DEBUG
-        usingInitList.debugDumpData();
-        usingInitList.debugDumpUserList();
-#endif
-
-        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
-    }
-    else
-    {
-        std::cout << "testing  using InitList addAllDefinitions()  Limits Only Constructor Multiple IDs Multiple Names Initialization List PASSED\n";
-        testPassed = true;
-    }
-
-    std::cout << std::endl; // flush output buffer
-
-    return testPassed;
-}
-
-static bool defaultConThrowRuntimeErrorInAddVector()
-{
-    std::string dictionaryName("throwError");
-    std::string tname("Throw runtime Exception from addAllDefinitions");
-
-    std::string addTitle(dictionaryName +
-        ".addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, "
-         + "testVecMultiNameMultiID" + ")");
-
-    std::cout << "testing " << dictionaryName << " Default Constructor - " << tname << "\n";
-    GenericDictionary<TestAdditions, std::string> testDictionary;
-
-    std::cout << "testing " << "testDictionary.enableExceptions(true);" << "\n";
-    testDictionary.enableExceptions(true);
+    std::string addTitle("usingInitList"
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, INITLIST)");
 
     try
     {
-        std::cout << "testing " << addTitle << "\n";
+        std::clog << "\ntesting usingInitList Constructor using initialization list\n";
+        GenericDictionary<TestFunctionalityEnumDict, std::string>
+        usingInitList(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum,{
+            {TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+            {TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+            {TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
+            {TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
+            {TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+            {TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+            {TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+            {TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+            {TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
+            {TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
+            {TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 11"},
+            {TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 12"},
+            {TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+            {TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+            {TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
+            {TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}}
+        );
+        testPassed = didConstructionWork("usingInitList", usingInitList, 10);
+        if (testPassed)
+        {
+            std::clog << addTitle << " PASSED\n";
+        }
+        else
+        {
+            std::cerr << addTitle << " FAILED\n";
+            testPassed = false;
+#ifdef DEBUG
+            usingInitList.debugDumpData();
+            usingInitList.debugDumpUserList();
+#endif
+        }
+    }
+    catch (const std::logic_error &le)
+    {
+        std::cerr << addTitle  << " logic_error: " << le.what() << "\n\n";
+        testPassed = false;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        testPassed = false;
+    }
+    
 
-    // Negative Path - error message expected
-        if (testDictionary.addAllDefinitions(TestAdditions::NewAdd_Invalid_enum_Value, TestAdditions::NewAddLast_Enum, testVecMultiNameMultiID))
+    std::clog << "\n";
+
+    return testPassed;
+}
+
+static bool expectSuccessArray(std::string dictionaryName, std::string tname, std::string rangeName,
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+{
+	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,16> testArray;
+    std::size_t i = 0;
+	for (auto tdata: testVec)
+	{
+		testArray[i] = tdata;
+        ++i;
+	}
+
+    bool testPassed = true;
+    std::string addTitle(dictionaryName +
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
+         + rangeName + ")");
+
+    try
+    {
+        std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testArray);
+
+        std::clog << "testing " << addTitle << "\n";
+        testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
+        if (testPassed)
+        {
+            std::clog << "testing " << addTitle << " PASSED\n\n";
+        }
+        else
         {
             std::cerr << "testing " << addTitle << " FAILED\n";
+            testPassed = false;
 #ifdef DEBUG
             testDictionary.debugDumpData();
             testDictionary.debugDumpUserList();
 #endif
-            didConstructionWork(dictionaryName, testDictionary, 1);
         }
-        else
-        {
-            std::cout << "testing " << addTitle << " PASSED\n\n";
-        }
-        std::cout.flush();
     }
     catch (const std::logic_error &le)
     {
-        std::cout << "GenericDictionary addAllDefinitions threw expected std::logic_error: \n\t" << le.what() << "\n";
-        std::cout << "GenericDictionary Constructor Negative Path Test: Missing ID enum Missing Names: PASSED\n\n";
-        std::cout.flush();
+        std::cerr << addTitle  << " logic_error: " << le.what() << "\n\n";
+        testPassed = false;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        testPassed = false;
+    }
+    
+    return testPassed;
+}
+
+static bool expectSuccessVector(std::string dictionaryName, std::string tname, std::string rangeName,
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+{
+    bool testPassed = true;
+    std::string addTitle(dictionaryName +
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
+         + rangeName + ")");
+
+    try
+    {
+        std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+        GenericDictionary<TestFunctionalityEnumDict, std::string>
+        testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testVec);
+
+        std::clog << "testing " << addTitle << "\n";
+        testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
+        if (testPassed)
+        {
+            std::clog << "testing " << addTitle << " PASSED\n\n";
+        }
+        else
+        {
+            std::cerr << "testing " << addTitle << " FAILED\n";
+            testPassed = false;
+#ifdef DEBUG
+            testDictionary.debugDumpData();
+            testDictionary.debugDumpUserList();
+#endif
+        }
+    }
+    catch (const std::logic_error &le)
+    {
+        std::cerr << addTitle  << " logic_error: " << le.what() << "\n\n";
+        testPassed = false;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        testPassed = false;
+    }
+    
+    return testPassed;
+}
+
+static bool expectFailureRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
+{
+    bool testPassed = true;
+    std::string addTitle(dictionaryName +
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
+         + rangeName + ")");
+
+    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+    try
+    {
+        std::clog << "testing " << addTitle << "\n"; // flush output
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testRange);
+#ifdef DEBUG
+        testDictionary.debugDumpData();
+        testDictionary.debugDumpUserList();
+#endif
+        std::cerr << "testing " << addTitle << " FAILED\n";
+        testPassed = false;
+        didConstructionWork(dictionaryName, testDictionary, 1);
+    }
+    catch (const std::logic_error &le)
+    {
+        std::clog << "GenericDictionary constructor threw expected std::logic_error: \n\t" << le.what() << "\n";
+        std::clog << "testing " << addTitle << " PASSED\n\n";
+        std::clog.flush();
         return true;
     }
     catch(const std::exception& e)
     {
-        std::cerr << "TestGenericDictionary::testContructorPositivePath() UNKNOWN EXCEPTION: " <<
-            e.what() << "\n\n";
-        std::cout.flush();
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        std::clog.flush();
         return false;
     }
     
-    std::cerr << "GenericDictionary Constructor Negative Path Test: Missing ID enum: FAILED\n\n";
-    std::cout.flush();
+    std::clog.flush();
 
-    return false;
+    return testPassed;
+}
+
+static bool expectFailArray(std::string dictionaryName, std::string tname, std::string rangeName,
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+{
+	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,16> testArray;
+    std::size_t i = 0;
+	for (auto tdata: testVec)
+	{
+		testArray[i] = tdata;
+        ++i;
+	}
+
+    bool testPassed = true;
+    std::string addTitle(dictionaryName +
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
+         + rangeName + ")");
+
+    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+    try
+    {
+        std::clog << "testing " << addTitle << "\n"; // flush output
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(
+            TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testArray);
+#ifdef DEBUG
+        testDictionary.debugDumpData();
+        testDictionary.debugDumpUserList();
+#endif
+        std::cerr << "testing " << addTitle << " FAILED\n";
+        testPassed = false;
+        didConstructionWork(dictionaryName, testDictionary, 1);
+    }
+    catch (const std::logic_error &le)
+    {
+        std::clog << "GenericDictionary constructor threw expected std::logic_error: \n\t" << le.what() << "\n";
+        std::clog << "testing " << addTitle << " PASSED\n\n";
+        std::clog.flush();
+        return true;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        std::clog.flush();
+        return false;
+    }
+    
+    std::clog.flush();
+
+    return testPassed;
+}
+
+static bool expectFailVector(std::string dictionaryName, std::string tname, std::string rangeName,
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+{
+    bool testPassed = true;
+    std::string addTitle(dictionaryName +
+        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
+         + rangeName + ")");
+
+    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+    try
+    {
+        std::clog << "testing " << addTitle << "\n"; // flush output
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(
+            TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testVec);
+#ifdef DEBUG
+        testDictionary.debugDumpData();
+        testDictionary.debugDumpUserList();
+#endif
+        std::cerr << "testing " << addTitle << " FAILED\n";
+        testPassed = false;
+        didConstructionWork(dictionaryName, testDictionary, 1);
+    }
+    catch (const std::logic_error &le)
+    {
+        std::clog << "GenericDictionary constructor threw expected std::logic_error: \n\t" << le.what() << "\n";
+        std::clog << "testing " << addTitle << " PASSED\n\n";
+        std::clog.flush();
+        return true;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
+        std::clog.flush();
+        return false;
+    }
+    
+    std::clog.flush();
+
+    return testPassed;
+}
+
+
+static bool ConstuctorArrMultiIDMultiName() noexcept
+{
+    return (expectFailArray("arrayMultiIDMultiNames", "Duplicate IDs Duplicate Names in Array", "testArrMultiNameMultiID", testVecMultiNameMultiID));
+}
+
+static bool ConstuctorVecMultiIDMultiName() noexcept
+{
+    return (expectFailVector("vectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testArrMultiNameMultiID", testVecMultiNameMultiID));
+}
+
+static bool ConstructorArraySuccess() noexcept
+{
+    return expectSuccessArray("testArray", "Definitions by array", "newAddArray", newAddtestVec);
+}
+
+static bool ConstructorVectorSuccess() noexcept
+{
+    return expectSuccessVector("testVec", "Definitions by vector", "newAddtestVec", newAddtestVec);
 }
 
 typedef bool (*testFunc)();
 static testFunc testFunctions[] =
 {
-    defaultConstructorSelfTests,
-    defaultConstructorAddVector,
-    defaultConstructorAddArray,
-    defaultConstructorAddInitializerList,
-    limitsConstructorAddVector,
-    limitsConstructorAddArray,
-    limitsConstructorAddInitializerList,
+    ConstructorInitializerListSuccess,
+    ConstructorVectorSuccess,
+    ConstructorArraySuccess,
 // Negative Path Testing
-    defaultConstAddVecMultiID,
-    defaultConstAddVecMultiName,
-    defaultConstAddVecMultiIDMultiName,
-    defaultConstAddArrMultiID,
-    defaultConstAddArrMultiName,
-    defaultConstAddArrMultiIDMultiName,
-    defaultConstAddInitListMultiID,
-    defaultConstAddInitListMultiName,
-    defaultConstAddInitListMultiIDMultiName,
-    limitsConstAddVecMultiID,
-    limitsConstAddVecMultiName,
-    limitsConstAddVecMultiIDMultiName,
-    limitsConstAddArrMultiID,
-    limitsConstAddArrMultiName,
-    limitsConstAddArrMultiIDMultiName,
-    limitsConstAddInitListMultiID,
-    limitsConstAddInitListMultiName,
-    limitsConstAddInitListMultiIDMultiName,
-    defaultConThrowRuntimeErrorInAddVector,
+    ConstuctorVecMultiIDMultiName,
+    ConstuctorArrMultiIDMultiName,
 };
 
 bool executeAllFuntionalTests() noexcept
@@ -915,15 +488,15 @@ bool executeAllFuntionalTests() noexcept
 
     if (allTestsPassed)
     {
-        std::cout << "ALL Functional Tests PASSED\n";
+        std::clog << "ALL Functional Tests PASSED\n";
     }
     else
     {
-        std::cout << "Some or all Functional Tests FAILED\n"; 
+        std::clog << "Some or all Functional Tests FAILED\n"; 
     }
-    std::cout << "FUNCTIONAL TEST EXECUTION COMPLETE\n\n";
+    std::clog << "FUNCTIONAL TEST EXECUTION COMPLETE\n\n";
 
-    std::cout.flush();
+    std::clog.flush();
 
     return allTestsPassed;
 }
