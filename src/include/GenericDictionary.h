@@ -21,9 +21,6 @@
  * 
  * This class makes an attempt to find any missing definitions during construction.
  * 
- * Enums or integers should have an illegal value as 0. If not, then override the
- * getIds method.
- * 
  * The code has been modified based on the Code Reviews
  * https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation
  * and
@@ -56,37 +53,17 @@ class GenericDictionary
 public:
     using DictType = GenricDictionaryDataPair<DictID, DictName>;
 
-// Both the MinValue and MaxValue should be invalid values
-// Example
-// GenericDictionary(enum::NO_VALUE, enum::LAST_VALUE)
-
-    GenericDictionary()
-    : MinimumValue{0},
-      MaximumValue{0}
-    {};
-
-// Safe constructor that will not throw exceptions, but the search table is
-// not initialized.
-    GenericDictionary(DictID MinValue, DictID MaxValue)
-    : MinimumValue{MinValue},
-      MaximumValue{MaxValue}
-      {};
 // The following constructors will throw exceptions if there are problems in the
 // list of definitions.
     GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
-    GenericDictionary(DictID MinValue, DictID MaxValue, std::vector<DictType> definitions);
+    GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
     virtual ~GenericDictionary() = default;
 
     std::optional<DictID> getIds(DictName itemName);
     std::optional<DictName> getNames(DictID id);
-    bool addAllDefinitions(std::ranges::input_range auto&& definitions);
-    bool addAllDefinitions(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
-    bool addAllDefinitions(std::initializer_list<DictType> definitions);
-    bool addAllDefinitions(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
 
 #ifdef GD_UNIT_TEST
-    std::vector<DictType> getUserInput() const noexcept { return userInputList; }
-    bool selfUnitTest();
+    std::vector<DictType> getUserInput() const noexcept { return userInputList; }    bool selfUnitTest();
 #endif
 
 #ifdef DEBUG
@@ -140,10 +117,10 @@ MaximumValue{MaxValue}
 }
 
 template <typename DictID, typename DictName>
-GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::vector<DictType> definitions)
+GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions)
 : MinimumValue{MinValue},
 MaximumValue{MaxValue},
-userInputList{definitions}
+userInputList{definitions.begin(), definitions.end()}
 {
     if (!commonInternalListBuilder("Constructor"))
     {
@@ -174,70 +151,6 @@ std::optional<DictName> GenericDictionary<DictID, DictName>::getNames(DictID id)
     }
 
     return std::nullopt;
-}
-
-/*
- * This method is used when a default constructor has been used to create the object.
- */
-template <typename DictID, typename DictName>
-bool GenericDictionary<DictID, DictName>::addAllDefinitions(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions)
-{
-    MinimumValue = MinValue;
-    MaximumValue = MaxValue;
-    return addAllDefinitions(definitions);
-}
-
-/*
- * All the other addAllDefinitions() functions reference this function.
- */
-template <typename DictID, typename DictName>
-bool GenericDictionary<DictID, DictName>::addAllDefinitions(std::ranges::input_range auto&& definitions)
-{
-    bool noErrors = true;
-
-// There is no guarantee that definitions are a vector so translate
-    for (auto const& newDef : definitions)
-    {
-        userInputList.push_back(newDef);
-    }
-
-    if (noErrors)
-    {
-        noErrors = commonInternalListBuilder("addAllDefinitions()");
-        if (!noErrors)
-        {
-            std::logic_error constructionError(exceptionWhatMsg);
-            throw constructionError;
-        }
-    }
-
-    return noErrors;
-}
-
-template <typename DictID, typename DictName>
-bool GenericDictionary<DictID, DictName>::addAllDefinitions(std::initializer_list<DictType> definitions)
-{
-    std::vector<DictType> tmpMap;
-
-    for (auto const& newDef : definitions)
-    {
-        tmpMap.push_back(newDef);
-    }
-
-    return addAllDefinitions(tmpMap);
-}
-
-template <typename DictID, typename DictName>
-bool GenericDictionary<DictID, DictName>::addAllDefinitions(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions)
-{
-    std::vector<DictType> tmpMap;
-
-    for (auto const& newDef : definitions)
-    {
-        tmpMap.push_back(newDef);
-    }
-
-    return addAllDefinitions(MinValue, MaxValue, tmpMap);
 }
 
 #ifdef DEBUG
