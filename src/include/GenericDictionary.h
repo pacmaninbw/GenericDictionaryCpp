@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <concepts>
 #include <exception>
+#include <expected>
 #include <initializer_list>
-#include <optional>
 #include <ranges>
 #include <stdexcept>
 #include <string>
@@ -31,6 +31,15 @@
  */
 
 /******************************************************************************
+ * For errors in lookup functions
+ *****************************************************************************/
+enum class DictionaryLookUpError
+{
+    Id_Not_Found,
+    Name_Not_Found
+};
+
+/******************************************************************************
  * Data structures and class Declarations
  *****************************************************************************/
 template <typename DictID, typename DictName>
@@ -51,9 +60,10 @@ public:
     GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
     GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
     virtual ~GenericDictionary() = default;
-
-    std::optional<DictID> getIds(DictName itemName);
-    std::optional<DictName> getNames(DictID id);
+    auto lookupID(DictName itemName) const 
+        -> std::expected<DictID, DictionaryLookUpError>;
+    auto lookupName(DictID id)  const
+        -> std::expected<DictName, DictionaryLookUpError>;
 
 #ifdef GD_UNIT_TEST
     std::vector<DictType> getUserInput() const noexcept { return userInputList; }
@@ -123,7 +133,8 @@ userInputList{definitions.begin(), definitions.end()}
 }
 
 template <typename DictID, typename DictName>
-std::optional<DictID> GenericDictionary<DictID, DictName>::getIds(DictName itemName)
+auto GenericDictionary<DictID, DictName>::lookupID(DictName itemName) const
+    -> std::expected<DictID, DictionaryLookUpError>
 {
     auto definition = nameSearchTable.find(itemName);
     if (definition != nameSearchTable.end())
@@ -131,11 +142,12 @@ std::optional<DictID> GenericDictionary<DictID, DictName>::getIds(DictName itemN
         return definition->second;
     }
 
-    return std::nullopt;
+    return std::unexpected{DictionaryLookUpError::Name_Not_Found};
 };
 
 template <typename DictID, typename DictName>
-std::optional<DictName> GenericDictionary<DictID, DictName>::getNames(DictID id)
+auto GenericDictionary<DictID, DictName>::lookupName(DictID id) const
+    -> std::expected<DictName, DictionaryLookUpError>
 {
     auto definition = idSearchTable.find(id);
     if (definition != idSearchTable.end())
@@ -143,7 +155,7 @@ std::optional<DictName> GenericDictionary<DictID, DictName>::getNames(DictID id)
         return definition->second;
     }
 
-    return std::nullopt;
+    return std::unexpected{DictionaryLookUpError::Id_Not_Found};
 }
 
 #ifdef DEBUG

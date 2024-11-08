@@ -119,6 +119,68 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
 };
 
+static bool testLookUpID(
+    TestFunctionalityEnumDict searchID,
+    std::string expectedName,
+    GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
+    std::string testName)
+{
+    std::size_t idIntVal = static_cast<std::size_t>(searchID);
+    std::string strVal = expectedName;
+
+    std::clog << "\ttesting " << testName << ".lookupName(" << idIntVal << "), expected output is " << strVal << "\n";
+    auto checkName = dictionary.lookupName(searchID);
+    if (checkName.has_value() && *checkName == strVal)
+    {
+        std::clog << "\t" << testName << ".getNames(" << idIntVal << ") PASSED\n";
+    }
+    else
+    {
+        if (checkName.has_value())
+        {
+            std::cerr << "\t" << testName << ".lookupName(" << idIntVal << ") FAILED\n";
+            std::cerr << "\tExpected " << strVal << " Actual " << *checkName << "\n";
+        }
+        else
+        {
+            std::cerr << "\t" << testName << ".lookupName(" << idIntVal << ") FAILED\n";
+            std::cerr << "\tID Not Found\n";
+        }
+        return false;
+    }
+
+    return true;
+}
+
+static bool testLookUpName(
+    std::size_t idIntVal,
+    std::string strVal,
+    GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
+    std::string testName)
+{
+    auto checkID = dictionary.lookupID(strVal);
+    if (checkID.has_value() && static_cast<std::size_t>(*checkID) == idIntVal)
+    {
+        std::clog << "\t" << testName << ".lookupID(" << strVal << ") PASSED\n";
+    }
+    else
+    {
+        if (checkID.has_value())
+        {
+            std::cerr << "\t" << testName << ".lookupID(" << strVal << ") FAILED\n";
+            std::cerr << "\tExpected " << std::to_string(idIntVal) << " Actual " << 
+                std::to_string(static_cast<std::size_t>(*checkID)) << "\n";
+        }
+        else
+        {
+            std::cerr << "\t" << testName << ".lookupID(" << strVal << ") Name Not Found FAILED\n";
+        }
+        return false;
+    }
+
+    return true;
+}
+
 static bool didConstructionWork(
     std::string testName,
     GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
@@ -130,28 +192,15 @@ static bool didConstructionWork(
     std::size_t idIntVal = static_cast<std::size_t>(userInput[itemToTest].id);
     std::string strVal = userInput[itemToTest].names;
 
-    std::clog << "\ttesting " << testName << ".getNames(" << idIntVal << "), expected output is " << strVal << "\n";
-    if (dictionary.getNames(userInput[itemToTest].id) != strVal)
+    testPassed = testLookUpID(userInput[itemToTest].id, strVal, dictionary, testName);
+// Test no matter what, but don't change a failure to a pass.
+    if (testPassed)
     {
-        std::cerr << "\t" << testName << ".getNames(" << idIntVal << ") FAILED\n";
-        testPassed = false;
+        testPassed = testLookUpName(idIntVal, strVal, dictionary, testName);
     }
     else
     {
-        std::clog << "\t" << testName << ".getNames(" << idIntVal << ") PASSED\n";
-    }
-
-    std::clog << "\ttesting " << testName << ".getIds(" << strVal << "), expected output is "
-    << idIntVal << "\n";
-
-    if (dictionary.getIds(strVal) != userInput[itemToTest].id)
-    {
-        std::cerr << "\t" << testName << ".getIds(" << strVal << ") FAILED\n";
-        testPassed = false;
-    }
-    else
-    {
-        std::clog << "\t" << testName << ".getIds(" << strVal << ") PASSED\n";
+        testLookUpName(idIntVal, strVal, dictionary, testName);
     }
 
     return testPassed;
