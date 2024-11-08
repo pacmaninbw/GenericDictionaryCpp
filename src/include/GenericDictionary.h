@@ -13,11 +13,7 @@
 #include <unordered_map>
 
 /*
- * This class provides a basic conversion of enums or integers to strings. The
- * class can be used as is, or as a base for more complex object.
- * 
- * More complex objects than strings are also supported, however, overrides will
- * be necessary.
+ * This class provides a basic conversion of enums or integers to strings.  
  * 
  * This class makes an attempt to find any missing definitions during construction.
  * 
@@ -31,9 +27,6 @@
  * - The class is no longer abstract
  * - dicID became DictID and dicName became DictName
  * - The struct used by the constructor now has a template GenricDictionaryDataPair.
- * - The unit test code has been added to this file to ease maintenance.
- * - The code for all the methods and constructors have been moved into template specializations.
- * - There is a constructor that does not need to be wrapped in a try catch block.
  * 
  */
 
@@ -63,7 +56,7 @@ public:
     std::optional<DictName> getNames(DictID id);
 
 #ifdef GD_UNIT_TEST
-    std::vector<DictType> getUserInput() const noexcept { return userInputList; }    bool selfUnitTest();
+    std::vector<DictType> getUserInput() const noexcept { return userInputList; }
 #endif
 
 #ifdef DEBUG
@@ -250,7 +243,8 @@ template <typename DictID, typename DictName>
         {
             if (id1 == id2)
             {
-                exceptionWhatMsg += "duplicate enum values: " + std::to_string(id1) + " Name: " + defIter1->names + " - " + std::to_string(id2) +
+                exceptionWhatMsg += "duplicate enum values: " + std::to_string(id1) + 
+                    " Name: " + defIter1->names + " - " + std::to_string(id2) +
                     " Name: " + defIter2->names + "\n\t";
             }
             else
