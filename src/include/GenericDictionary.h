@@ -1,8 +1,16 @@
 #ifndef GENERICDICTIONARY_H_
 #define GENERICDICTIONARY_H_
 
+// Allow debug in either gcc or MSVS
+#ifdef _DEBUG
+#define GD_DEBUG
+#else
+#ifndef NDEBUG
+#define GD_DEBUG
+#endif
+#endif
+
 #include <algorithm>
-#include <concepts>
 #include <exception>
 #include <expected>
 #include <initializer_list>
@@ -60,20 +68,18 @@ public:
     GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
     GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
     virtual ~GenericDictionary() = default;
-    auto lookupID(DictName itemName) const 
-        -> std::expected<DictID, DictionaryLookUpError>;
-    auto lookupName(DictID id)  const
-        -> std::expected<DictName, DictionaryLookUpError>;
+    auto lookupID(DictName itemName) const -> std::expected<DictID, DictionaryLookUpError>;
+    auto lookupName(DictID id) const -> std::expected<DictName, DictionaryLookUpError>;
 
 #ifdef GD_UNIT_TEST
     std::vector<DictType> getUserInput() const noexcept { return userInputList; }
 #endif
 
-#ifdef DEBUG
+#ifdef GD_DEBUG
     void debugDumpData() const noexcept;
     void debugDumpUserList() noexcept { debugDumpList(userInputList); };
     void debugDumpList(std::vector<DictType> candidate) noexcept;
-#endif // DEBUG
+#endif // GD_DEBUG
 
 private:
     [[nodiscard]] bool commonInternalListBuilder(std::string funcName) noexcept;
@@ -100,7 +106,7 @@ private:
 };
 
 /******************************************************************************
- * Public interface specializations.
+ * Public interface.
  *****************************************************************************/
 template <typename DictID, typename DictName>
 GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions)
@@ -158,7 +164,8 @@ auto GenericDictionary<DictID, DictName>::lookupName(DictID id) const
     return std::unexpected{DictionaryLookUpError::Id_Not_Found};
 }
 
-#ifdef DEBUG
+#ifdef GD_DEBUG
+// GD_DEBUG is defined if either NDEBUG or _DEBUG are defined
 #include <iostream>
 template <typename DictID, typename DictName>
 void GenericDictionary<DictID, DictName>::debugDumpList(std::vector<DictType> toDump) noexcept
@@ -191,7 +198,7 @@ void GenericDictionary<DictID, DictName>::debugDumpData() const noexcept
     }
     std::cerr << "\t}\n";
 }
-#endif // DEBUG
+#endif // GD_DEBUG
 
 /******************************************************************************
  * Private methods
