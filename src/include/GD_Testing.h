@@ -24,7 +24,7 @@ static bool testIdToName(
 	std::string errorMessage
 )
 {
-    std::string testGetName = underTest.getNames(testID).value();
+    std::string testGetName = underTest.lookupName(testID).value();
     if (testGetName.compare(expectedOutput) != 0)
     {
         std::cerr
@@ -47,7 +47,7 @@ static bool testNameToID(
 	std::string errorMessage
 	)
 {
-    enumDictType testGetID = underTest.getIds(testName).value();
+    enumDictType testGetID = underTest.lookupID(testName).value();
     if (testGetID != expectedOutput)
     {
         std::cerr <<
@@ -77,7 +77,7 @@ static bool testIDtoNameLoop(
     {
         enumDictType testId = test.id;
         std::string expectedOutPut = test.names;
-        std::string testGetName = underTest.getNames(testId).value();
+        std::string testGetName = underTest.lookupName(testId).value();
         if (testGetName.compare(expectedOutPut) != 0)
         {
             std::cerr
@@ -107,7 +107,7 @@ static bool testNametoIDLoop(
     {
         std::string testName = test.names;
         enumDictType expectedOutput = test.id;
-        enumDictType testGetID = underTest.getIds(testName).value();
+        enumDictType testGetID = underTest.lookupID(testName).value();
         if (testGetID != expectedOutput)
         {
             std::cerr <<
