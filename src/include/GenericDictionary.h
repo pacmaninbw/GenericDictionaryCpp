@@ -65,8 +65,8 @@ public:
 
 // The following constructors will throw exceptions if there are problems in the
 // list of definitions.
-    GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions);
-    GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions);
+    GenericDictionary(std::initializer_list<DictType> definitions);
+    GenericDictionary(std::ranges::input_range auto&& definitions);
     virtual ~GenericDictionary() = default;
     auto lookupID(DictName itemName) const -> std::expected<DictID, DictionaryLookUpError>;
     auto lookupName(DictID id) const -> std::expected<DictName, DictionaryLookUpError>;
@@ -84,20 +84,12 @@ public:
 private:
     [[nodiscard]] bool commonInternalListBuilder(std::string funcName) noexcept;
     [[nodiscard]] bool alreadyDefined(DictType candidate) noexcept { return hasID(candidate.id) || hasName(candidate.names); };
-    [[nodiscard]] bool missingIDSizeTest(std::string funcName) noexcept;
     [[nodiscard]] bool reportDuplicateNameErrors(std::string funcName) noexcept;
     [[nodiscard]] bool hasID(DictID id) noexcept;
     [[nodiscard]] bool hasName(DictName name) noexcept;
     [[nodiscard]] bool sortAndTestIds() noexcept;
     [[nodiscard]] bool testForIDNoneLinearDefinitions(std::string funcName) noexcept;
     [[nodiscard]] bool addDefinition(DictType newDef) noexcept;
-
-/*
- * Don't change the order of the following 2 member variables since they
- * are set in contructors and the order is important.
- */
-    DictID MinimumValue;
-    DictID MaximumValue;
 
     std::unordered_map<DictID, DictName> idSearchTable;
     std::unordered_map<DictName, DictID> nameSearchTable;
@@ -109,9 +101,7 @@ private:
  * Public interface.
  *****************************************************************************/
 template <typename DictID, typename DictName>
-GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::initializer_list<DictType> definitions)
-: MinimumValue{MinValue},
-MaximumValue{MaxValue}
+GenericDictionary<DictID, DictName>::GenericDictionary(std::initializer_list<DictType> definitions)
 {
     for (auto const& newDef : definitions)
     {
@@ -126,10 +116,8 @@ MaximumValue{MaxValue}
 }
 
 template <typename DictID, typename DictName>
-GenericDictionary<DictID, DictName>::GenericDictionary(DictID MinValue, DictID MaxValue, std::ranges::input_range auto&& definitions)
-: MinimumValue{MinValue},
-MaximumValue{MaxValue},
-userInputList{definitions.begin(), definitions.end()}
+GenericDictionary<DictID, DictName>::GenericDictionary(std::ranges::input_range auto&& definitions)
+: userInputList{definitions.begin(), definitions.end()}
 {
     if (!commonInternalListBuilder("Constructor"))
     {
@@ -181,8 +169,6 @@ template <typename DictID, typename DictName>
 void GenericDictionary<DictID, DictName>::debugDumpData() const noexcept
 {
     std::cerr << "\n\nGenericDictionary::Debug Dump Data\n";
-    std::cerr << "\tMinimumValue: " << static_cast<std::size_t>(MinimumValue) << "\n";
-    std::cerr << "\tMaximumValue: " << static_cast<std::size_t>(MaximumValue) << "\n";
     std::cerr << "ID Search Table:\n\t{\n";
     for (auto searchItem: idSearchTable)
     {
@@ -207,12 +193,7 @@ void GenericDictionary<DictID, DictName>::debugDumpData() const noexcept
 template<typename DictID, typename DictName>
 [[nodiscard]] bool GenericDictionary<DictID, DictName>::commonInternalListBuilder(std::string funcName) noexcept
 {
-    bool hasErrors = false;   
-    if (missingIDSizeTest(funcName))
-    {
-        hasErrors = true;
-    }
-
+    bool hasErrors = false;
     if (!testForIDNoneLinearDefinitions(funcName))
     {
         hasErrors = true;
@@ -275,21 +256,6 @@ template <typename DictID, typename DictName>
     }
 
     return noErrors;
-}
-
-template <typename DictID, typename DictName>
-[[nodiscard]] bool GenericDictionary<DictID, DictName>::missingIDSizeTest(std::string funcName) noexcept
-{
-    std::size_t expectedSize = static_cast<std::size_t>(MaximumValue);
-    expectedSize -= 1;
-    if (userInputList.size() != expectedSize)
-    {
-        exceptionWhatMsg += "In GenericDictionary::" + funcName + " missing definition values";
-        exceptionWhatMsg += " expected size " + std::to_string(expectedSize) + " actual size " + std::to_string(userInputList.size());
-        return true;
-    }
-
-    return false;
 }
 
 template <typename DictID, typename DictName>

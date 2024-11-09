@@ -1,5 +1,4 @@
 #define GD_UNIT_TEST
-#define DEBUG
 
 #include <array>
 #include "FunctionalityTests.h"
@@ -13,7 +12,7 @@
 
 enum class TestFunctionalityEnumDict
 {
-	NewAdd_Invalid_enum_Value,
+	FunctionalTest_0,
 	FunctionalTest_1,
 	FunctionalTest_2,
 	FunctionalTest_3,
@@ -29,8 +28,7 @@ enum class TestFunctionalityEnumDict
 	FunctionalTest_13,
 	FunctionalTest_14,
 	FunctionalTest_15,
-	FunctionalTest_16,
-	NewAddLast_Enum
+	FunctionalTest_16
 };
 
 /*
@@ -38,6 +36,7 @@ enum class TestFunctionalityEnumDict
  */
 static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> newAddtestVec = 
 {
+	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
 	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
 	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
@@ -181,6 +180,28 @@ static bool testLookUpName(
     return true;
 }
 
+static bool forceLookUpErrors(
+    GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
+    std::string testName)
+{
+    bool testPassed = true;
+    std::size_t idOutOfRange = static_cast<std::size_t>(TestFunctionalityEnumDict::FunctionalTest_16) + 10;
+    TestFunctionalityEnumDict IdOutOfRange = static_cast<TestFunctionalityEnumDict>(idOutOfRange);
+    std::string notFound("Not Found");
+
+    if (testLookUpID(IdOutOfRange, notFound, dictionary, testName))
+    {
+        testPassed = false;
+    }
+
+    if (testLookUpName(idOutOfRange, notFound, dictionary, testName))
+    {
+        testPassed = false;
+    }
+
+    return testPassed;
+}
+
 static bool didConstructionWork(
     std::string testName,
     GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
@@ -203,6 +224,24 @@ static bool didConstructionWork(
         testLookUpName(idIntVal, strVal, dictionary, testName);
     }
 
+    if (testPassed)
+    {
+        testPassed = forceLookUpErrors(dictionary, testName);
+    }
+    else
+    {
+        forceLookUpErrors(dictionary, testName);
+    }
+
+#ifdef GD_DEBUG
+    if (!testPassed)
+    {
+        std::cerr << "One or more Look Up tests FAILED\n";
+        dictionary.debugDumpData();
+        dictionary.debugDumpUserList();
+    }
+#endif
+
     return testPassed;
 }
 
@@ -214,9 +253,9 @@ static bool ConstructorInitializerListSuccess() noexcept
 
     try
     {
-        std::clog << "\ntesting usingInitList Constructor using initialization list\n";
+        std::clog << "\ntesting usingInitList Constructor using initialization list" << std::endl;
         GenericDictionary<TestFunctionalityEnumDict, std::string>
-        usingInitList(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum,{
+        usingInitList({
             {TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
             {TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
             {TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
@@ -243,10 +282,6 @@ static bool ConstructorInitializerListSuccess() noexcept
         {
             std::cerr << addTitle << " FAILED\n";
             testPassed = false;
-#ifdef DEBUG
-            usingInitList.debugDumpData();
-            usingInitList.debugDumpUserList();
-#endif
         }
     }
     catch (const std::logic_error &le)
@@ -269,7 +304,7 @@ static bool ConstructorInitializerListSuccess() noexcept
 static bool expectSuccessArray(std::string dictionaryName, std::string tname, std::string rangeName,
     std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
 {
-	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,16> testArray;
+	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,17> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
@@ -278,14 +313,12 @@ static bool expectSuccessArray(std::string dictionaryName, std::string tname, st
 	}
 
     bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
-         + rangeName + ")");
+    std::string addTitle(dictionaryName + "(" + rangeName + ")");
 
     try
     {
-        std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
-        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testArray);
+        std::clog << "testing " << dictionaryName << " Constructor - " << tname << std::endl;
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(testArray);
 
         std::clog << "testing " << addTitle << "\n";
         testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
@@ -297,10 +330,6 @@ static bool expectSuccessArray(std::string dictionaryName, std::string tname, st
         {
             std::cerr << "testing " << addTitle << " FAILED\n";
             testPassed = false;
-#ifdef DEBUG
-            testDictionary.debugDumpData();
-            testDictionary.debugDumpUserList();
-#endif
         }
     }
     catch (const std::logic_error &le)
@@ -321,15 +350,13 @@ static bool expectSuccessVector(std::string dictionaryName, std::string tname, s
     std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
 {
     bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
-         + rangeName + ")");
+    std::string addTitle(dictionaryName + "(" + rangeName + ")");
 
     try
     {
-        std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+        std::clog << "testing " << dictionaryName << " Constructor - " << tname << std::endl;
         GenericDictionary<TestFunctionalityEnumDict, std::string>
-        testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testVec);
+        testDictionary(testVec);
 
         std::clog << "testing " << addTitle << "\n";
         testPassed = didConstructionWork(dictionaryName, testDictionary, 1);
@@ -341,10 +368,6 @@ static bool expectSuccessVector(std::string dictionaryName, std::string tname, s
         {
             std::cerr << "testing " << addTitle << " FAILED\n";
             testPassed = false;
-#ifdef DEBUG
-            testDictionary.debugDumpData();
-            testDictionary.debugDumpUserList();
-#endif
         }
     }
     catch (const std::logic_error &le)
@@ -361,45 +384,6 @@ static bool expectSuccessVector(std::string dictionaryName, std::string tname, s
     return testPassed;
 }
 
-static bool expectFailureRange(std::string dictionaryName, std::string tname, std::string rangeName, std::ranges::input_range auto &&testRange) noexcept
-{
-    bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
-         + rangeName + ")");
-
-    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
-    try
-    {
-        std::clog << "testing " << addTitle << "\n"; // flush output
-        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testRange);
-#ifdef DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
-        std::cerr << "testing " << addTitle << " FAILED\n";
-        testPassed = false;
-        didConstructionWork(dictionaryName, testDictionary, 1);
-    }
-    catch (const std::logic_error &le)
-    {
-        std::clog << "GenericDictionary constructor threw expected std::logic_error: \n\t" << le.what() << "\n";
-        std::clog << "testing " << addTitle << " PASSED\n\n";
-        std::clog.flush();
-        return true;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << addTitle << " UNKNOWN EXCEPTION: " << e.what() << "\n\n";
-        std::clog.flush();
-        return false;
-    }
-    
-    std::clog.flush();
-
-    return testPassed;
-}
-
 static bool expectFailArray(std::string dictionaryName, std::string tname, std::string rangeName,
     std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
 {
@@ -412,17 +396,14 @@ static bool expectFailArray(std::string dictionaryName, std::string tname, std::
 	}
 
     bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
-         + rangeName + ")");
+    std::string addTitle(dictionaryName + "(" + rangeName + ")");
 
-    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+    std::clog << "testing " << dictionaryName << " Constructor - " << tname << std::endl;
     try
     {
         std::clog << "testing " << addTitle << "\n"; // flush output
-        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(
-            TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testArray);
-#ifdef DEBUG
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(testArray);
+#ifdef GD_DEBUG
         testDictionary.debugDumpData();
         testDictionary.debugDumpUserList();
 #endif
@@ -453,17 +434,14 @@ static bool expectFailVector(std::string dictionaryName, std::string tname, std:
     std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
 {
     bool testPassed = true;
-    std::string addTitle(dictionaryName +
-        "(TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, "
-         + rangeName + ")");
+    std::string addTitle(dictionaryName + "(" + rangeName + ")");
 
-    std::clog << "testing " << dictionaryName << " Constructor - " << tname << "\n";
+    std::clog << "testing " << dictionaryName << " Constructor - " << tname << std::endl;
     try
     {
         std::clog << "testing " << addTitle << "\n"; // flush output
-        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(
-            TestFunctionalityEnumDict::NewAdd_Invalid_enum_Value, TestFunctionalityEnumDict::NewAddLast_Enum, testVec);
-#ifdef DEBUG
+        GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(testVec);
+#ifdef GD_DEBUG
         testDictionary.debugDumpData();
         testDictionary.debugDumpUserList();
 #endif
@@ -529,10 +507,18 @@ bool executeAllFuntionalTests() noexcept
 
     for (std::size_t i = 0; i < allTestCount; ++i)
     {
-        if (!testFunctions[i]())
+        try
         {
-            allTestsPassed = false;
+            if (!testFunctions[i]())
+            {
+                allTestsPassed = false;
+            }
         }
+        catch(const std::exception& e)
+        {
+            std::cerr << "Caught Exception in executeAllFuntionalTests " << e.what() << '\n';
+            allTestsPassed = false;
+        }        
     }
 
     if (allTestsPassed)
