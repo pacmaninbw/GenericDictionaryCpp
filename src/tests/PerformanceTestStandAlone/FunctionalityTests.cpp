@@ -60,6 +60,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
  */
 static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiNameMultiID = 
 {
+	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
 	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
 	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 2"},
@@ -80,6 +81,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 
 static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiName = 
 {
+	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
 	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
 	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
@@ -100,6 +102,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 
 static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiID = 
 {
+	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
 	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
 	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
@@ -118,11 +121,13 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
 };
 
-static bool testLookUpID(
+static bool testFindNameFromID(
     TestFunctionalityEnumDict searchID,
     std::string expectedName,
     GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
-    std::string testName)
+    std::string testName,
+    bool expectPass=true
+)
 {
     std::size_t idIntVal = static_cast<std::size_t>(searchID);
     std::string strVal = expectedName;
@@ -131,7 +136,16 @@ static bool testLookUpID(
     auto checkName = dictionary.lookupName(searchID);
     if (checkName.has_value() && *checkName == strVal)
     {
-        std::clog << "\t" << testName << ".getNames(" << idIntVal << ") PASSED\n";
+        if (expectPass)
+        {
+            std::clog << "\t" << testName << ".lookupName(" << idIntVal << ") PASSED\n";
+        }
+        else
+        {
+            std::cerr << "\t ID was found, but expected fail " <<
+                testName << ".lookupName(" << idIntVal << ") FAILED\n";
+            return false;
+        }
     }
     else
     {
@@ -139,28 +153,48 @@ static bool testLookUpID(
         {
             std::cerr << "\t" << testName << ".lookupName(" << idIntVal << ") FAILED\n";
             std::cerr << "\tExpected " << strVal << " Actual " << *checkName << "\n";
+            return false;
         }
         else
         {
-            std::cerr << "\t" << testName << ".lookupName(" << idIntVal << ") FAILED\n";
-            std::cerr << "\tID Not Found\n";
+            if (expectPass)
+            {
+                std::cerr << "\t" << testName << ".lookupName(" << idIntVal << ") FAILED\n";
+                std::cerr << "\tID Not Found\n";
+                return false;
+            }
+            else
+            {
+                std::clog << "\t" << testName << ".lookupName(" << idIntVal <<
+                    ") failed as expected PASSED\n";
+            }
         }
-        return false;
     }
 
     return true;
 }
 
-static bool testLookUpName(
+static bool testFindIDFromName(
     std::size_t idIntVal,
     std::string strVal,
     GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
-    std::string testName)
+    std::string testName,
+    bool expectPass = true
+)
 {
     auto checkID = dictionary.lookupID(strVal);
     if (checkID.has_value() && static_cast<std::size_t>(*checkID) == idIntVal)
     {
-        std::clog << "\t" << testName << ".lookupID(" << strVal << ") PASSED\n";
+        if (expectPass)
+        {
+            std::clog << "\t" << testName << ".lookupID(" << strVal << ") PASSED\n";
+        }
+        else
+        {
+            std::cerr << "\t Name was found, but expected fail " <<
+                testName << ".lookupID(" << strVal << ") FAILED\n";
+            return false;
+        }
     }
     else
     {
@@ -169,12 +203,22 @@ static bool testLookUpName(
             std::cerr << "\t" << testName << ".lookupID(" << strVal << ") FAILED\n";
             std::cerr << "\tExpected " << std::to_string(idIntVal) << " Actual " << 
                 std::to_string(static_cast<std::size_t>(*checkID)) << "\n";
+                return false;
         }
         else
         {
-            std::cerr << "\t" << testName << ".lookupID(" << strVal << ") Name Not Found FAILED\n";
+            if (expectPass)
+            {
+                std::cerr << "\t" << testName << ".lookupID(" << strVal <<
+                    ") Name Not Found FAILED\n";
+                return false;
+            }
+            else
+            {
+                std::clog << "\t" << testName << ".lookupID(" << strVal <<
+                    ") failed as expected PASSED\n";
+            }
         }
-        return false;
     }
 
     return true;
@@ -189,12 +233,12 @@ static bool forceLookUpErrors(
     TestFunctionalityEnumDict IdOutOfRange = static_cast<TestFunctionalityEnumDict>(idOutOfRange);
     std::string notFound("Not Found");
 
-    if (testLookUpID(IdOutOfRange, notFound, dictionary, testName))
+    if (!testFindNameFromID(IdOutOfRange, notFound, dictionary, testName, false))
     {
         testPassed = false;
     }
 
-    if (testLookUpName(idOutOfRange, notFound, dictionary, testName))
+    if (!testFindIDFromName(idOutOfRange, notFound, dictionary, testName, false))
     {
         testPassed = false;
     }
@@ -213,15 +257,15 @@ static bool didConstructionWork(
     std::size_t idIntVal = static_cast<std::size_t>(userInput[itemToTest].id);
     std::string strVal = userInput[itemToTest].names;
 
-    testPassed = testLookUpID(userInput[itemToTest].id, strVal, dictionary, testName);
+    testPassed = testFindNameFromID(userInput[itemToTest].id, strVal, dictionary, testName);
 // Test no matter what, but don't change a failure to a pass.
     if (testPassed)
     {
-        testPassed = testLookUpName(idIntVal, strVal, dictionary, testName);
+        testPassed = testFindIDFromName(idIntVal, strVal, dictionary, testName);
     }
     else
     {
-        testLookUpName(idIntVal, strVal, dictionary, testName);
+        testFindIDFromName(idIntVal, strVal, dictionary, testName);
     }
 
     if (testPassed)
@@ -301,13 +345,18 @@ static bool ConstructorInitializerListSuccess() noexcept
     return testPassed;
 }
 
+static constexpr std::size_t ArrayMax = 17;
 static bool expectSuccessArray(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
 {
-	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,17> testArray;
+	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
+        if (i >= ArrayMax)
+        {
+            break;
+        }
 		testArray[i] = tdata;
         ++i;
 	}
@@ -347,7 +396,7 @@ static bool expectSuccessArray(std::string dictionaryName, std::string tname, st
 }
 
 static bool expectSuccessVector(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
 {
     bool testPassed = true;
     std::string addTitle(dictionaryName + "(" + rangeName + ")");
@@ -385,12 +434,16 @@ static bool expectSuccessVector(std::string dictionaryName, std::string tname, s
 }
 
 static bool expectFailArray(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
 {
-	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>,16> testArray;
+	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
+        if (i >= ArrayMax)
+        {
+            break;
+        }
 		testArray[i] = tdata;
         ++i;
 	}
@@ -431,7 +484,7 @@ static bool expectFailArray(std::string dictionaryName, std::string tname, std::
 }
 
 static bool expectFailVector(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVec) noexcept
+    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
 {
     bool testPassed = true;
     std::string addTitle(dictionaryName + "(" + rangeName + ")");
@@ -476,7 +529,7 @@ static bool ConstuctorArrMultiIDMultiName() noexcept
 
 static bool ConstuctorVecMultiIDMultiName() noexcept
 {
-    return (expectFailVector("vectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testArrMultiNameMultiID", testVecMultiNameMultiID));
+    return (expectFailVector("vectorMultiIDMultiNames", "Duplicate IDs Duplicate Names in Vector", "testVecMultiNameMultiID", testVecMultiNameMultiID));
 }
 
 static bool ConstructorArraySuccess() noexcept
