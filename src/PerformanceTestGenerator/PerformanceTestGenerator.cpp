@@ -4,7 +4,7 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include "../../include/UtilityTimer.h"
+#include "../tests/UtilityTimer.h"
 #include "PerformanceTestGenerator.h"
 
 PerformanceTestGenerator::PerformanceTestGenerator(TestParameters testParameters)

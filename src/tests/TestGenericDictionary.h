@@ -1,7 +1,6 @@
 #ifndef TESTGENERICDICTIONARY_H
 #define TESTGENERICDICTIONARY_H
 
-#include "../include/GenericDictionary.h"
 /*
  * GD for GenericDictionary
  */

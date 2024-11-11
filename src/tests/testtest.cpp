@@ -1,7 +1,7 @@
 #define DEBUG
 #include "FunctionalityTests.h"
 #include <iostream>
-#include "../PerformanceTestGenerator/performanceTest.h"
+#include "performanceTest.h"
 #include "TestGenericDictionary.h"
 
 

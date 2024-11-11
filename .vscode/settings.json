@@ -54,5 +54,6 @@
         "fstream": "cpp",
         "ranges": "cpp",
         "span": "cpp"
-    }
+    },
+    "makefile.configureOnOpen": true
 }

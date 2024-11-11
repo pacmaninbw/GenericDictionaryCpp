@@ -1,6 +1,6 @@
 #include "TestParameters.h"
 #include "PerformanceTestGenerator.h"
-#include "../../include/UtilityTimer.h"
+#include "../tests/UtilityTimer.h"
 
 int main(int argc, char* argv[])
 {

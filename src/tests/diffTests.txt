@@ -1,0 +1,492 @@
+76,77c76,77
+< >>>> Finished Positive Path Constructor Test Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 4.7575e-05
+---
+> >>>> Finished Positive Path Constructor Test Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 2.6173e-05
+90,91c90,91
+< >>>> Finished Negative Path Constructor Test: Missing ID Enum Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 3.7594e-05
+---
+> >>>> Finished Negative Path Constructor Test: Missing ID Enum Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.1331e-05
+104,105c104,105
+< >>>> Finished Negative Path Constructor Test: Duplicate ID Enum Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 3.9291e-05
+---
+> >>>> Finished Negative Path Constructor Test: Duplicate ID Enum Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.5249e-05
+116,117c116,117
+< >>>> Finished Negative Path Constructor Test: Duplicate Name string Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 3.2478e-05
+---
+> >>>> Finished Negative Path Constructor Test: Duplicate Name string Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.3129e-05
+124,125c124,125
+< >>>> Finished Performance Test Constructor performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000109657
+---
+> >>>> Finished Performance Test Constructor performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.6451e-05
+128,129c128,129
+< >>>> Finished Performance Test find string from [15] ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.755e-06
+---
+> >>>> Finished Performance Test find string from [15] ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.514e-06
+132,133c132,133
+< >>>> Finished Performance Test find string from [11] ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.286e-06
+---
+> >>>> Finished Performance Test find string from [11] ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.03e-07
+136,137c136,137
+< >>>> Finished Performance Test find string from [7] ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.291e-06
+---
+> >>>> Finished Performance Test find string from [7] ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.6e-07
+140,141c140,141
+< >>>> Finished Performance Test find string from [3] ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.254e-06
+---
+> >>>> Finished Performance Test find string from [3] ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.43e-07
+144,145c144,145
+< >>>> Finished Performance Test find string from [0] ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.272e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.83e-07
+148,149c148,149
+< >>>> Finished Performance Test find ID from [15] Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.365e-06
+---
+> >>>> Finished Performance Test find ID from [15] Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.222e-06
+152,153c152,153
+< >>>> Finished Performance Test find ID from [11] Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.007e-06
+---
+> >>>> Finished Performance Test find ID from [11] Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.248e-06
+156,157c156,157
+< >>>> Finished Performance Test find ID from [7] Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.019e-06
+---
+> >>>> Finished Performance Test find ID from [7] Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.183e-06
+160,161c160,161
+< >>>> Finished Performance Test find ID from [3] Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.454e-06
+---
+> >>>> Finished Performance Test find ID from [3] Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.79e-07
+164,165c164,165
+< >>>> Finished Performance Test find ID from [0] Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.135e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.79e-07
+168,169c168,169
+< >>>> Finished Performance Loop Test find string from ID performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.6415e-05
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.774e-06
+172,173c172,173
+< >>>> Finished Performance Loop Test find ID from Name performanceTest16ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.2899e-05
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest16ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.855e-06
+179,180c179,180
+< >>>> Finished Performance Test Constructor performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 9.6636e-05
+---
+> >>>> Finished Performance Test Constructor performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 3.9057e-05
+183,184c183,184
+< >>>> Finished Performance Test find string from [15] ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.368e-06
+---
+> >>>> Finished Performance Test find string from [15] ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.44e-07
+187,188c187,188
+< >>>> Finished Performance Test find string from [11] ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.267e-06
+---
+> >>>> Finished Performance Test find string from [11] ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.88e-07
+191,192c191,192
+< >>>> Finished Performance Test find string from [7] ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.255e-06
+---
+> >>>> Finished Performance Test find string from [7] ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.87e-07
+195,196c195,196
+< >>>> Finished Performance Test find string from [3] ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.365e-06
+---
+> >>>> Finished Performance Test find string from [3] ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.98e-07
+199,200c199,200
+< >>>> Finished Performance Test find string from [0] ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.3e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.66e-07
+203,204c203,204
+< >>>> Finished Performance Test find ID from [15] Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.235e-06
+---
+> >>>> Finished Performance Test find ID from [15] Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.76e-07
+207,208c207,208
+< >>>> Finished Performance Test find ID from [11] Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.046e-06
+---
+> >>>> Finished Performance Test find ID from [11] Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 9.67e-07
+211,212c211,212
+< >>>> Finished Performance Test find ID from [7] Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.967e-06
+---
+> >>>> Finished Performance Test find ID from [7] Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.059e-06
+215,216c215,216
+< >>>> Finished Performance Test find ID from [3] Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.473e-06
+---
+> >>>> Finished Performance Test find ID from [3] Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.3e-07
+219,220c219,220
+< >>>> Finished Performance Test find ID from [0] Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.152e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 9.08e-07
+223,224c223,224
+< >>>> Finished Performance Loop Test find string from ID performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.574e-05
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.768e-06
+227,228c227,228
+< >>>> Finished Performance Loop Test find ID from Name performanceTest16Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.2807e-05
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest16Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.687e-06
+234,235c234,235
+< >>>> Finished Performance Test Constructor performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000245414
+---
+> >>>> Finished Performance Test Constructor performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 0.00011373
+238,239c238,239
+< >>>> Finished Performance Test find string from [31] ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.723e-06
+---
+> >>>> Finished Performance Test find string from [31] ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.536e-06
+242,243c242,243
+< >>>> Finished Performance Test find string from [23] ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.305e-06
+---
+> >>>> Finished Performance Test find string from [23] ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.19e-07
+246,247c246,247
+< >>>> Finished Performance Test find string from [15] ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.28e-06
+---
+> >>>> Finished Performance Test find string from [15] ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.5e-07
+250,251c250,251
+< >>>> Finished Performance Test find string from [7] ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.243e-06
+---
+> >>>> Finished Performance Test find string from [7] ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.44e-07
+254,255c254,255
+< >>>> Finished Performance Test find string from [0] ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.252e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.75e-07
+258,259c258,259
+< >>>> Finished Performance Test find ID from [31] Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.424e-06
+---
+> >>>> Finished Performance Test find ID from [31] Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.278e-06
+262,263c262,263
+< >>>> Finished Performance Test find ID from [23] Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.213e-06
+---
+> >>>> Finished Performance Test find ID from [23] Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.53e-07
+266,267c266,267
+< >>>> Finished Performance Test find ID from [15] Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.161e-06
+---
+> >>>> Finished Performance Test find ID from [15] Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.54e-07
+270,271c270,271
+< >>>> Finished Performance Test find ID from [7] Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.184e-06
+---
+> >>>> Finished Performance Test find ID from [7] Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.8e-07
+274,275c274,275
+< >>>> Finished Performance Test find ID from [0] Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.159e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.1e-07
+278,279c278,279
+< >>>> Finished Performance Loop Test find string from ID performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.9268e-05
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.1098e-05
+282,283c282,283
+< >>>> Finished Performance Loop Test find ID from Name performanceTest32ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.6462e-05
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest32ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.3207e-05
+289,290c289,290
+< >>>> Finished Performance Test Constructor performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000220734
+---
+> >>>> Finished Performance Test Constructor performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 0.000101677
+293,294c293,294
+< >>>> Finished Performance Test find string from [31] ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.393e-06
+---
+> >>>> Finished Performance Test find string from [31] ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.49e-07
+297,298c297,298
+< >>>> Finished Performance Test find string from [23] ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.216e-06
+---
+> >>>> Finished Performance Test find string from [23] ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.8e-07
+301,302c301,302
+< >>>> Finished Performance Test find string from [15] ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.228e-06
+---
+> >>>> Finished Performance Test find string from [15] ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 4.95e-07
+305,306c305,306
+< >>>> Finished Performance Test find string from [7] ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.261e-06
+---
+> >>>> Finished Performance Test find string from [7] ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.47e-07
+309,310c309,310
+< >>>> Finished Performance Test find string from [0] ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.31e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.76e-07
+313,314c313,314
+< >>>> Finished Performance Test find ID from [31] Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.361e-06
+---
+> >>>> Finished Performance Test find ID from [31] Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.8e-07
+317,318c317,318
+< >>>> Finished Performance Test find ID from [23] Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.19e-06
+---
+> >>>> Finished Performance Test find ID from [23] Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.71e-07
+321,322c321,322
+< >>>> Finished Performance Test find ID from [15] Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.138e-06
+---
+> >>>> Finished Performance Test find ID from [15] Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.27e-07
+325,326c325,326
+< >>>> Finished Performance Test find ID from [7] Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.184e-06
+---
+> >>>> Finished Performance Test find ID from [7] Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.9e-07
+329,330c329,330
+< >>>> Finished Performance Test find ID from [0] Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.187e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.65e-07
+333,334c333,334
+< >>>> Finished Performance Loop Test find string from ID performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.9285e-05
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.0154e-05
+337,338c337,338
+< >>>> Finished Performance Loop Test find ID from Name performanceTest32Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 2.7212e-05
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest32Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.3588e-05
+344,345c344,345
+< >>>> Finished Performance Test Constructor performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.00423102
+---
+> >>>> Finished Performance Test Constructor performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 0.00143116
+348,349c348,349
+< >>>> Finished Performance Test find string from [254] ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.649e-06
+---
+> >>>> Finished Performance Test find string from [254] ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.532e-06
+352,353c352,353
+< >>>> Finished Performance Test find string from [190] ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.225e-06
+---
+> >>>> Finished Performance Test find string from [190] ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.9e-07
+356,357c356,357
+< >>>> Finished Performance Test find string from [126] ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.226e-06
+---
+> >>>> Finished Performance Test find string from [126] ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.44e-07
+360,361c360,361
+< >>>> Finished Performance Test find string from [62] ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.179e-06
+---
+> >>>> Finished Performance Test find string from [62] ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 5.54e-07
+364,365c364,365
+< >>>> Finished Performance Test find string from [0] ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.184e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.5e-07
+368,369c368,369
+< >>>> Finished Performance Test find ID from [254] Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.471e-06
+---
+> >>>> Finished Performance Test find ID from [254] Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.445e-06
+372,373c372,373
+< >>>> Finished Performance Test find ID from [190] Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.082e-06
+---
+> >>>> Finished Performance Test find ID from [190] Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7e-07
+376,377c376,377
+< >>>> Finished Performance Test find ID from [126] Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.094e-06
+---
+> >>>> Finished Performance Test find ID from [126] Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 6.68e-07
+380,381c380,381
+< >>>> Finished Performance Test find ID from [62] Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.154e-06
+---
+> >>>> Finished Performance Test find ID from [62] Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 9.3e-07
+384,385c384,385
+< >>>> Finished Performance Test find ID from [0] Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.094e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.97e-07
+388,389c388,389
+< >>>> Finished Performance Loop Test find string from ID performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000209121
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.4446e-05
+392,393c392,393
+< >>>> Finished Performance Loop Test find ID from Name performanceTest255ListInit Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000192692
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest255ListInit Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 9.927e-05
+399,400c399,400
+< >>>> Finished Performance Test Constructor performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.00378177
+---
+> >>>> Finished Performance Test Constructor performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 0.00142844
+403,404c403,404
+< >>>> Finished Performance Test find string from [254] ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.445e-06
+---
+> >>>> Finished Performance Test find string from [254] ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 2.5564e-05
+407,408c407,408
+< >>>> Finished Performance Test find string from [190] ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.117e-06
+---
+> >>>> Finished Performance Test find string from [190] ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.744e-06
+411,412c411,412
+< >>>> Finished Performance Test find string from [126] ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.141e-06
+---
+> >>>> Finished Performance Test find string from [126] ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.696e-06
+415,416c415,416
+< >>>> Finished Performance Test find string from [62] ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.115e-06
+---
+> >>>> Finished Performance Test find string from [62] ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.059e-06
+419,420c419,420
+< >>>> Finished Performance Test find string from [0] ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.2e-06
+---
+> >>>> Finished Performance Test find string from [0] ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.07e-07
+423,424c423,424
+< >>>> Finished Performance Test find ID from [254] Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.288e-06
+---
+> >>>> Finished Performance Test find ID from [254] Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 1.351e-06
+427,428c427,428
+< >>>> Finished Performance Test find ID from [190] Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.082e-06
+---
+> >>>> Finished Performance Test find ID from [190] Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.02e-07
+431,432c431,432
+< >>>> Finished Performance Test find ID from [126] Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.12e-06
+---
+> >>>> Finished Performance Test find ID from [126] Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.62e-07
+435,436c435,436
+< >>>> Finished Performance Test find ID from [62] Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.213e-06
+---
+> >>>> Finished Performance Test find ID from [62] Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 8.53e-07
+439,440c439,440
+< >>>> Finished Performance Test find ID from [0] Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 1.066e-06
+---
+> >>>> Finished Performance Test find ID from [0] Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.31e-07
+443,444c443,444
+< >>>> Finished Performance Loop Test find string from ID performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.00019545
+---
+> >>>> Finished Performance Loop Test find string from ID performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 7.1525e-05
+447,448c447,448
+< >>>> Finished Performance Loop Test find ID from Name performanceTest255Vector Mon Nov 11 08:26:29 2024
+< >>>> Elapsed time in seconds: 0.000180895
+---
+> >>>> Finished Performance Loop Test find ID from Name performanceTest255Vector Mon Nov 11 08:17:57 2024
+> >>>> Elapsed time in seconds: 9.8164e-05

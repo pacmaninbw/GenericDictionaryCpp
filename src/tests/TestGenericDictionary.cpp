@@ -1,6 +1,7 @@
 #define GD_PERFORMANCE_TEST
 #include <exception>
-#include "../include/GenericDictionary.h"
+#include "../../GenericDictionary.h"
+#include "GD_Testing.h"
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -17,7 +18,7 @@ bool TestGenericDictionary::executeTests() noexcept
     bool allTestsPassed = true;
     UtilityTimer testTimer;
 
-    std::cout << "Testing the GenericDictionary class\n";
+    std::cout << "Testing the GenericDictionary class Constructors\n";
     try
     {
         testTimer.startTimer();
@@ -63,11 +64,11 @@ bool TestGenericDictionary::executeTests() noexcept
     
     if (allTestsPassed)
     {
-        std::cout << "Testing the GenericDictionary class: ALL TESTS PASSED!\n";
+        std::cout << "Testing the GenericDictionary class Constructors: ALL TESTS PASSED!\n";
     }
     else
     {
-        std::cerr << "Testing the GenericDictionary class: SOME OR ALL TESTS FAILED!\n";
+        std::cerr << "Testing the GenericDictionary class Constructors: SOME OR ALL TESTS FAILED!\n";
     }
 
     return allTestsPassed;
@@ -111,10 +112,7 @@ bool TestGenericDictionary::testContructorPositivePath() noexcept
     {
         std::cout << "GenericDictionary Constructor Positive Path Test\n";
 
-        GenericDictionary <GDPositivePathEnum, std::string> underTest(
-            GDPositivePathEnum::GDPOSITIVE_INVALID_VALUE,
-            GDPositivePathEnum::GDPOSITIVE_LAST_ENUM,
-            {
+        GenericDictionary <GDPositivePathEnum, std::string> underTest({
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_1, positiveGDTestStrings[1]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_2, positiveGDTestStrings[2]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_3, positiveGDTestStrings[3]},
@@ -160,10 +158,7 @@ bool TestGenericDictionary::testConstructorMissingIDDef() noexcept
         std::cout << "GenericDictionary Constructor Negative Path Test: Missing ID enum\n";
         
         // GDPOSITIVE_TEST_VALUE_3 removed from constructor
-        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure(
-            GDPositivePathEnum::GDPOSITIVE_INVALID_VALUE,
-            GDPositivePathEnum::GDPOSITIVE_LAST_ENUM,
-            {
+        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure({
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_1, positiveGDTestStrings[1]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_2, positiveGDTestStrings[2]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_4, positiveGDTestStrings[4]},
@@ -198,10 +193,7 @@ bool TestGenericDictionary::testConstructorDuplicateID() noexcept
         
         // GDPOSITIVE_TEST_VALUE_2 is duplicated
         // GDPOSITIVE_TEST_VALUE_5 is missing
-        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure(
-            GDPositivePathEnum::GDPOSITIVE_INVALID_VALUE,
-            GDPositivePathEnum::GDPOSITIVE_LAST_ENUM,
-            {
+        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure({
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_1, positiveGDTestStrings[1]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_2, positiveGDTestStrings[2]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_3, positiveGDTestStrings[3]},
@@ -236,10 +228,7 @@ bool TestGenericDictionary::testConstructorDuplicateName() noexcept
         std::cout << "GenericDictionary Constructor Negative Path Test: Duplicate Name string\n";
         
         // positiveGDTestStrings[2] is duplicated
-        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure(
-            GDPositivePathEnum::GDPOSITIVE_INVALID_VALUE,
-            GDPositivePathEnum::GDPOSITIVE_LAST_ENUM,
-            {
+        GenericDictionary <GDPositivePathEnum, std::string> expectedFailure({
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_1, positiveGDTestStrings[1]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_2, positiveGDTestStrings[2]},
                 {GDPositivePathEnum::GDPOSITIVE_TEST_VALUE_3, positiveGDTestStrings[3]},
