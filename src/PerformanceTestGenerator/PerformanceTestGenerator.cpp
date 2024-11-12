@@ -48,8 +48,8 @@ bool PerformanceTestGenerator::generateAllPerformaneTests() noexcept
     std::cout << "//     " << reconstructCommandLine();
     std::cout << "\n\n";
     std::cout << "#define GD_PERFORMANCE_TEST\n";
-    std::cout << "#include \"../../include/GenericDictionary.h\"\n";
-    std::cout << "#include \"../../include/GD_Testing.h\"\n";
+    std::cout << "#include \"../../GenericDictionary.h\"\n";
+    std::cout << "#include \"GD_Testing.h\"\n";
     std::cout << "#include <string>\n";
     std::cout << "#include <vector>\n\n\n";
 
@@ -234,12 +234,9 @@ std::string PerformanceTestGenerator::genTestFunc(std::size_t testSize, bool use
         testName <<"\");\n\n\ttry {\n" <<
         "\t\tstd::clog << \"Testing GenericDictionary with enum of size " << testSize << "\\n\";" <<
         "\n\t\ttestTimer.startTimer();" <<
-        "\n\t\tGenericDictionary <" << enumBase  << ", std::string> underTest (\n";
+        "\n\t\tGenericDictionary <" << enumBase  << ", std::string> underTest (";
 
     enumBase += "::";
-
-    std::cout << "\t\t\t" << enumBase << firstEnum << ",\n"
-        "\t\t\t" << enumBase << lastEnum << ",";
 
     if (useVector)
     {
@@ -252,10 +249,10 @@ std::string PerformanceTestGenerator::genTestFunc(std::size_t testSize, bool use
         {
             return "";
         }
-        std::cout << "\t\t\t}";
+        std::cout << "\t\t\t}\n\t\t";
     }
 
-    std::cout << "\n\t\t);\n\t\ttestTimer.stopTimerAndReport(\"Performance Test Constructor \" + testName + \" \");\n\n\t\t" <<
+    std::cout << ");\n\t\ttestTimer.stopTimerAndReport(\"Performance Test Constructor \" + testName + \" \");\n\n\t\t" <<
         "testPassed = performanceExecution<" << enumName + std::to_string(testSize)  <<
         ">(underTest, testData" << testSize << ", testName);\n"
         "\n\t}\n"
