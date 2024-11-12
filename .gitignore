@@ -1,5 +1,7 @@
 # cmake files and directories
 build
+Debug
+Release
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
