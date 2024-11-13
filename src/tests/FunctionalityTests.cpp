@@ -2,7 +2,7 @@
 
 #include <array>
 #include "FunctionalityTests.h"
-#include "../../GenericDictionary.h"
+#include "GenericDictionary.h"
 #include <exception>
 #include <initializer_list>
 #include <iostream>

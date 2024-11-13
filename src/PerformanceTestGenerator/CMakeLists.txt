@@ -22,3 +22,15 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     # lots of warnings and all warnings as errors
     target_compile_options(createPerformanceTest PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
+
+add_custom_command(
+  OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/performanceTest.h
+  COMMAND createPerformanceTest --output-file ${CMAKE_CURRENT_SOURCE_DIR}/performanceTest.h --test-count 3 --radix-16 --test-size 10 --test-size 20 --test-size ff --both-tests
+  COMMENT "Generating performanceTest.h header file"
+  VERBATIM
+)
+
+add_custom_target(
+  GeneratedHeader ALL
+  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/performanceTest.h
+)

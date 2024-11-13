@@ -7,6 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(testTest testtest.cpp FunctionalityTests.cpp TestGenericDictionary.cpp)
 
+target_include_directories(testTest
+    PUBLIC ../..
+    PRIVATE ./ ../PerformanceTestGenerator 
+)
+
 target_compile_features(testTest PUBLIC cxx_std_23)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")

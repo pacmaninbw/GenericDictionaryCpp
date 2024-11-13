@@ -48,7 +48,7 @@ bool PerformanceTestGenerator::generateAllPerformaneTests() noexcept
     std::cout << "//     " << reconstructCommandLine();
     std::cout << "\n\n";
     std::cout << "#define GD_PERFORMANCE_TEST\n";
-    std::cout << "#include \"../../GenericDictionary.h\"\n";
+    std::cout << "#include \"GenericDictionary.h\"\n";
     std::cout << "#include \"GD_Testing.h\"\n";
     std::cout << "#include <string>\n";
     std::cout << "#include <vector>\n\n\n";
