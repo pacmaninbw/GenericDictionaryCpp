@@ -53,17 +53,21 @@ The DictionaryBase class should be portable to all systems and all C++23 compile
 # Development Environments  
 - C++ 23
 - CMake
+
 ## Linux Development  
 - gcc 12
 - Ubuntu 22.04
 - Visual Studio Code (vscode)
+
 ## Windows Development  
 - Windows 10
 - Visual Studion 2022
 
 ## Building The Tests  
 cmake -B build  
-cmake --build build -j  
+cmake --build build
+
+Do not attempt to use parallel building (-j or --parallel), there will be a race condition between generating a performance test header file and building the test.
 
 # Status  
 This code was reviewed on the [Stack Exchange Code Review site](https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation). The code reviewed in that review can be found in the `PreCodeReview` branch. Development is continuing in the `master` branch.  
@@ -78,5 +82,7 @@ A new repository was created, the original version of the GenericDictionary was 
 
 Multiple constructors have been added, including a default constructor.  
 # Todo Items  
- - Integrate the generated performance tests into the unit testing.
+ - Automate testing.
+   - Generate test output to a file
+   - Compare the test output to previous results.
 
