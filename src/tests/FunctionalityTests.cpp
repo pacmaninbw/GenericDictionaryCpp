@@ -277,15 +277,6 @@ static bool didConstructionWork(
         forceLookUpErrors(dictionary, testName);
     }
 
-#ifdef GD_DEBUG
-    if (!testPassed)
-    {
-        std::cerr << "One or more Look Up tests FAILED\n";
-        dictionary.debugDumpData();
-        dictionary.debugDumpUserList();
-    }
-#endif
-
     return testPassed;
 }
 
@@ -456,10 +447,6 @@ static bool expectFailArray(std::string dictionaryName, std::string tname, std::
     {
         std::clog << "testing " << addTitle << "\n"; // flush output
         GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(testArray);
-#ifdef GD_DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
         std::cerr << "testing " << addTitle << " FAILED\n";
         testPassed = false;
         didConstructionWork(dictionaryName, testDictionary, 1);
@@ -494,10 +481,6 @@ static bool expectFailVector(std::string dictionaryName, std::string tname, std:
     {
         std::clog << "testing " << addTitle << "\n"; // flush output
         GenericDictionary<TestFunctionalityEnumDict, std::string> testDictionary(testVec);
-#ifdef GD_DEBUG
-        testDictionary.debugDumpData();
-        testDictionary.debugDumpUserList();
-#endif
         std::cerr << "testing " << addTitle << " FAILED\n";
         testPassed = false;
         didConstructionWork(dictionaryName, testDictionary, 1);

@@ -75,12 +75,6 @@ public:
     std::vector<DictType> getUserInput() const noexcept { return userInputList; }
 #endif
 
-#ifdef GD_DEBUG
-    void debugDumpData() const noexcept;
-    void debugDumpUserList() noexcept { debugDumpList(userInputList); };
-    void debugDumpList(std::vector<DictType> candidate) noexcept;
-#endif // GD_DEBUG
-
 private:
     [[nodiscard]] bool commonInternalListBuilder(std::string funcName) noexcept;
     [[nodiscard]] bool alreadyDefined(DictType candidate) noexcept { return hasID(candidate.id) || hasName(candidate.names); };
@@ -151,40 +145,6 @@ auto GenericDictionary<DictID, DictName>::lookupName(DictID id) const
 
     return std::unexpected{DictionaryLookUpError::Id_Not_Found};
 }
-
-#ifdef GD_DEBUG
-// GD_DEBUG is defined if either NDEBUG or _DEBUG are defined
-#include <iostream>
-template <typename DictID, typename DictName>
-void GenericDictionary<DictID, DictName>::debugDumpList(std::vector<DictType> toDump) noexcept
-{
-    for (auto searchItem: toDump)
-    {
-        std::cerr << "\t\tID int value " << static_cast<std::size_t>(searchItem.id) 
-            << " Name value " << searchItem.names << "\n";
-    }
-}
-
-template <typename DictID, typename DictName>
-void GenericDictionary<DictID, DictName>::debugDumpData() const noexcept
-{
-    std::cerr << "\n\nGenericDictionary::Debug Dump Data\n";
-    std::cerr << "ID Search Table:\n\t{\n";
-    for (auto searchItem: idSearchTable)
-    {
-        std::cerr << "\t\tID int value " << static_cast<std::size_t>(searchItem.first) 
-            << " Name value " << searchItem.second << "\n";
-    }
-    std::cerr << "\t}\n";
-    std::cerr << "Name Search Table:\n\t{\n";
-    for (auto searchItem: nameSearchTable)
-    {
-        std::cerr << "\t\tID int value " << static_cast<std::size_t>(searchItem.second) 
-            << " Name value " << searchItem.first << "\n";
-    }
-    std::cerr << "\t}\n";
-}
-#endif // GD_DEBUG
 
 /******************************************************************************
  * Private methods
