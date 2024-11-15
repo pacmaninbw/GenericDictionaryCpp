@@ -65,9 +65,7 @@ The DictionaryBase class should be portable to all systems and all C++23 compile
 
 ## Building The Tests  
 cmake -B build  
-cmake --build build
-
-Do not attempt to use parallel building (-j or --parallel), there will be a race condition between generating a performance test header file and building the test.
+cmake --build build -j
 
 # Status  
 This code was reviewed on the [Stack Exchange Code Review site](https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation). The code reviewed in that review can be found in the `PreCodeReview` branch. Development is continuing in the `master` branch.  
