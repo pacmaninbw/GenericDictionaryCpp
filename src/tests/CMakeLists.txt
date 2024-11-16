@@ -12,8 +12,11 @@ target_include_directories(testTest
     PUBLIC ../..
     PRIVATE ./ ../PerformanceTestGenerator 
 )
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-    target_link_libraries(testTest gcov)
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    if(CMAKE_BUILD_TYPE MATCHES Debug)
+        target_link_libraries(testTest gcov)
+    endif()
 endif()
 
 target_compile_features(testTest PUBLIC cxx_std_23)
@@ -35,12 +38,4 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 endif()
 
-add_custom_target(coverage
-    COMMENT "Executing Tests"
-    COMMAND testTest
-    COMMENT "Runnung gcov"
-    COMMAND ${CMAKE_COMMAND} -E env GCOV_PREFIX=${CMAKE_BINARY_DIR}/coverage gcov ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-    COMMAND gcov -r ${CMAKE_CURRENT_SOURCE_DIR}
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/src/tests/CMakeFiles/testTest.dir
-    COMMENT "Generating coverage report"
-)
+
