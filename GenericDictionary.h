@@ -1,15 +1,6 @@
 #ifndef GENERICDICTIONARY_H_
 #define GENERICDICTIONARY_H_
 
-// Allow debug in either gcc or MSVS
-#ifdef _DEBUG
-#define GD_DEBUG
-#else
-#ifndef NDEBUG
-#define GD_DEBUG
-#endif
-#endif
-
 #include <algorithm>
 #include <exception>
 #include <expected>
