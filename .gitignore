@@ -58,3 +58,8 @@ TestTableMap
 *.exe
 *.out
 *.app
+
+# Test Coverage
+*.gcov
+*.gcda
+*.gcno
