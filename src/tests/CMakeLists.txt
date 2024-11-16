@@ -38,4 +38,12 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 endif()
 
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    enable_testing()
+
+    add_test(NAME testTest COMMAND testTest)
+
+    set_property(TEST testTest PROPERTY PASS_REGULAR_EXPRESSION "PASSED")
+    set_property(TEST testTest PROPERTY FAIL_REGULAR_EXPRESSION "FAILED")
+endif()
 
