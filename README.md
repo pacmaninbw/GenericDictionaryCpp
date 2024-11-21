@@ -9,12 +9,15 @@ with strings or more complex mechanisms. It can be a base class for other conver
 The src/tests/TestDictionary.cpp file contains the unit testing for the GenericDictionary 
 class as well as classes that inherit from the GenericDictionary base class.
 
-The ColumnDictionary files and the TableDictionary files are from 
-another project that uses the GenericDictionary class defined in
-GenericDictionary.h.
+## Learning Project  
+This project is a learning project, while the major goal is to provide a generic enum to string conversion class, the secondary goal is to keep my C++ skills up to date. What I am learning is:  
+ - Improving my CMake skills  
+ - Learn CTest  
+ - Learn C++23 features  
+   - std::expected  
+ - Improve my knowledge of C++20 ranges  
 
 # Usage
-
 
 Strings can be assigned to EnumValue_1 through EnumValue_N.
 
@@ -42,10 +45,11 @@ GenericDictionary<ENUMNAME, NameType>({<GenricDictionaryDataPair<ENUMNAME, NameT
 
 ```
 // Translate enums to names and names to enums
-    ENUMNAME getIds(NameType itemName);
-    NameType getNames(ENUMNAME id);
-    
- 
+    auto lookupID(DictName itemName) const -> std::expected<DictID, DictionaryLookUpError>;
+    auto lookupName(DictID id) const -> std::expected<DictName, DictionaryLookUpError>;
+// The lookup functions return C++23 std::expected which allows the user to check if
+// a valid value was returned before using the value.
+
 ```
 
 The DictionaryBase class should be portable to all systems and all C++23 compilers.
@@ -83,4 +87,6 @@ Multiple constructors have been added, including a default constructor.
  - Automate testing.
    - Generate test output to a file
    - Compare the test output to previous results.
-
+ - Completely rework unit testing using CTest.
+ - Get the `requires` for the range based constructor working properly.
+ 
