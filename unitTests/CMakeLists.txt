@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.25)
 
 project(UnitTest LANGUAGES CXX)
 
-set(POSITIVE_PATH_TESTS "ptp_performanceTest.cpp")
-set(NEGATIVE_PATH_TESTS "ntp_arrayDupNameDupID.cpp" "ntp_arrayDupID.cpp" "ntp_arrayDupName.cpp")
+set(POSITIVE_PATH_TESTS ptp_performanceTest.cpp)
+set(NEGATIVE_PATH_TESTS ntp_vectorDupID.cpp  ntp_vectorDupName.cpp  ntp_vectorDupNameDupID.cpp ntp_arrayDupNameDupID.cpp ntp_arrayDupID.cpp 
+    ntp_arrayDupName.cpp)
 
 enable_testing()
 

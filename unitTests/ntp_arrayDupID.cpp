@@ -10,14 +10,14 @@
 
 int main()
 {
-    std::string testTitle("Initized using Array: multiple Names");
+    std::string testTitle("Initized using Array: multiple IDs");
 
     std::clog << "\n" << testTitle << std::endl;
     std::cout<< "<CTestLabel>" << testTitle << "</CTestLabel>" << std::endl;
 
     try
     {
-        std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, 17> negativePathArray = copyVecToArray(testVecMultiName);
+        std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, 17> negativePathArray = copyVecToArray(testVecMultiID);
 
         GenericDictionary<TestFunctionalityEnumDict, std::string> dictionary(negativePathArray);
 
