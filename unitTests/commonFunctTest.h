@@ -4,7 +4,6 @@
 #define GD_UNIT_TEST
 #include <array>
 #include "GenericDictionary.h"
-#include "GD_Testing.h"
 #include <iostream>
 #include <string>
 #include <vector>
