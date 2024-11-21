@@ -10,7 +10,7 @@
 
 int main()
 {
-    std::string testTitle("Initized using Array: multiple IDs multipleNames");
+    std::string testTitle("Initized using Array: multiple IDs multiple Names");
 
     std::clog << "\n" << testTitle << std::endl;
     std::cout<< "<CTestLabel>" << testTitle << "</CTestLabel>" << std::endl;
