@@ -30,15 +30,10 @@ enum class TestFunctionalityEnumDict
 	FunctionalTest_16
 };
 
-struct TestPair
-{
-	TestFunctionalityEnumDict id;
-	std::string names;
-};
 /*
  * Positive Path Test Data
  */
-std::vector<TestPair> testPostivePathVec = 
+std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testPostivePathVec = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -85,7 +80,7 @@ std::array<TestPair, 17> testPostivePathVec =
 /*
  * Negative Path Test Data
  */
-std::vector<TestPair> testVecMultiIDMultiName = 
+std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiIDMultiName = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -106,7 +101,7 @@ std::vector<TestPair> testVecMultiIDMultiName =
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-std::vector<TestPair> testVecMultiName = 
+std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiName = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -127,7 +122,7 @@ std::vector<TestPair> testVecMultiName =
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-std::vector<TestPair> testVecMultiID = 
+std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiID = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -149,10 +144,10 @@ std::vector<TestPair> testVecMultiID =
 };
 
 constexpr std::size_t ArrayMax = 17;
-std::array<TestPair, ArrayMax>
-copyVecToArray(std::vector<TestPair>& testVec)
+std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax>
+copyVecToArray(std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec)
 {
-    std::array<TestPair, ArrayMax> testArray;
+    std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
