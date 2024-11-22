@@ -7,6 +7,7 @@ set(NEGATIVE_PATH_TESTS
     ntp_initListDupNameDupID.cpp ntp_initListDupID.cpp ntp_initListDupName.cpp
     ntp_vectorDupID.cpp  ntp_vectorDupName.cpp  ntp_vectorDupNameDupID.cpp
     ntp_arrayDupNameDupID.cpp ntp_arrayDupID.cpp ntp_arrayDupName.cpp
+    ntp_arrayLookupFail.cpp ntp_vectorLookupFail.cpp ntp_initListLookupFail.cpp
 )
 
 enable_testing()

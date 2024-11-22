@@ -53,6 +53,8 @@ std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> te
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
 };
 
+constexpr std::size_t ForceIDFail = static_cast<std::size_t>(TestFunctionalityEnumDict::FunctionalTest_16) + 10;
+
 #if 0
 std::array<TestPair, 17> testPostivePathVec = 
 {
