@@ -1,8 +1,6 @@
-#include <array>
 #include "commonFunctTest.h"
 #include "GenericDictionary.h"
 #include <exception>
-#include <initializer_list>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -17,9 +15,7 @@ int main()
 
     try
     {
-        std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, 17> negativePathArray = copyVecToArray(testVecMultiIDMultiName);
-
-        GenericDictionary<TestFunctionalityEnumDict, std::string> dictionary(negativePathArray);
+        GenericDictionary<TestFunctionalityEnumDict, std::string> dictionary(testVecMultiIDMultiName);
 
         auto checkID = dictionary.lookupID("Functional Test Str 0");
         TestFunctionalityEnumDict testEnum;

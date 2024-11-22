@@ -1,8 +1,6 @@
-#include <array>
 #include "commonFunctTest.h"
 #include "GenericDictionary.h"
 #include <exception>
-#include <initializer_list>
 #include <iostream>
 #include <stdexcept>
 #include <string>
