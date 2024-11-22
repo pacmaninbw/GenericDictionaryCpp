@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 
 project(UnitTest LANGUAGES CXX)
 
-set(POSITIVE_PATH_TESTS ptp_performanceTest.cpp)
+set(POSITIVE_PATH_TESTS ptp_vector.cpp ptp_array.cpp ptp_initList.cpp ptp_performanceTest.cpp)
 set(NEGATIVE_PATH_TESTS
     ntp_initListDupNameDupID.cpp ntp_initListDupID.cpp ntp_initListDupName.cpp
     ntp_vectorDupID.cpp  ntp_vectorDupName.cpp  ntp_vectorDupNameDupID.cpp
@@ -20,7 +20,7 @@ foreach( testsourcefile ${POSITIVE_PATH_TESTS} )
     endif()
     add_test(NAME ${testname} COMMAND ${testname})
     set_property(TEST ${testname} PROPERTY PASS_REGULAR_EXPRESSION "PASSED")
-    set_property(TEST ${testname} PROPERTY FAIL_REGULAR_EXPRESSION "FAILED")
+    set_property(TEST ${testname} PROPERTY FAIL_REGULAR_EXPRESSION "FAILED;missing;duplicate;Duplicate;Wrong enum;Name not found;Wrong name;ID not found")
 endforeach( testsourcefile ${POSITIVE_PATH_TESTS} )
 
 foreach( testsourcefile ${NEGATIVE_PATH_TESTS} )
@@ -28,7 +28,7 @@ foreach( testsourcefile ${NEGATIVE_PATH_TESTS} )
     get_filename_component( testname ${testsourcefile} NAME_WE )
     add_executable( ${testname} ${testsourcefile} )
     add_test(NAME ${testname} COMMAND ${testname})
-    set_property(TEST ${testname} PROPERTY PASS_REGULAR_EXPRESSION "missing;dupllicate;Duplicate")
+    set_property(TEST ${testname} PROPERTY PASS_REGULAR_EXPRESSION "missing;duplicate;Duplicate;Wrong enum;Name not found;Wrong name;ID not found")
     set_property(TEST ${testname} PROPERTY FAIL_REGULAR_EXPRESSION "FAILED")
 endforeach( testsourcefile ${NEGATIVE_PATH_TESTS} )
 
