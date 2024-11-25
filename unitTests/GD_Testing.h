@@ -62,12 +62,12 @@ static bool testNameToID(
     return true;
 }
 
-template <typename  enumDictType> using TestPairs = GenricDictionaryDataPair<enumDictType, std::string>;
+template <typename  enumDictType> using TestPairs = GenericDictionary<enumDictType, std::string>::DictType;
 
 template <typename enumDictType>
 static bool testIDtoNameLoop(
     GenericDictionary <enumDictType, std::string>& underTest,
-    std::vector<GenricDictionaryDataPair<enumDictType, std::string>>& TestData,
+    std::vector<TestPairs<enumDictType>>& TestData,
     std::string errorMessage
 )
 {
@@ -97,7 +97,7 @@ static bool testIDtoNameLoop(
 template <typename enumDictType>
 static bool testNametoIDLoop(
     GenericDictionary <enumDictType, std::string>& underTest,
-    std::vector<GenricDictionaryDataPair<enumDictType, std::string>>& TestData,
+    std::vector<TestPairs<enumDictType>>& TestData,
     std::string errorMessage
 )
 {

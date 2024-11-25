@@ -31,10 +31,12 @@ enum class TestFunctionalityEnumDict
 	FunctionalTest_16
 };
 
+using GenricDictionaryDataPair = GenericDictionary<TestFunctionalityEnumDict, std::string>::DictType;
+
 /*
  * Positive Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> newAddtestVec = 
+static std::vector<GenricDictionaryDataPair> newAddtestVec = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -58,7 +60,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 /*
  * Negative Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiNameMultiID = 
+static std::vector<GenricDictionaryDataPair> testVecMultiNameMultiID = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -79,7 +81,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiName = 
+static std::vector<GenricDictionaryDataPair> testVecMultiName = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -100,7 +102,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiID = 
+static std::vector<GenricDictionaryDataPair> testVecMultiID = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -253,7 +255,7 @@ static bool didConstructionWork(
 ) noexcept
 {
     bool testPassed = true;
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> userInput = dictionary.getUserInput();
+    std::vector<GenricDictionaryDataPair> userInput = dictionary.getUserInput();
     std::size_t idIntVal = static_cast<std::size_t>(userInput[itemToTest].id);
     std::string strVal = userInput[itemToTest].names;
 
@@ -338,9 +340,9 @@ static bool ConstructorInitializerListSuccess() noexcept
 
 static constexpr std::size_t ArrayMax = 17;
 static bool expectSuccessArray(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
+    std::vector<GenricDictionaryDataPair>& testVec) noexcept
 {
-	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax> testArray;
+	std::array<GenricDictionaryDataPair, ArrayMax> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
@@ -387,7 +389,7 @@ static bool expectSuccessArray(std::string dictionaryName, std::string tname, st
 }
 
 static bool expectSuccessVector(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
+    std::vector<GenricDictionaryDataPair>& testVec) noexcept
 {
     bool testPassed = true;
     std::string addTitle(dictionaryName + "(" + rangeName + ")");
@@ -425,9 +427,9 @@ static bool expectSuccessVector(std::string dictionaryName, std::string tname, s
 }
 
 static bool expectFailArray(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
+    std::vector<GenricDictionaryDataPair>& testVec) noexcept
 {
-	std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax> testArray;
+	std::array<GenricDictionaryDataPair, ArrayMax> testArray;
     std::size_t i = 0;
 	for (auto tdata: testVec)
 	{
@@ -472,7 +474,7 @@ static bool expectFailArray(std::string dictionaryName, std::string tname, std::
 }
 
 static bool expectFailVector(std::string dictionaryName, std::string tname, std::string rangeName,
-    std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec) noexcept
+    std::vector<GenricDictionaryDataPair>& testVec) noexcept
 {
     bool testPassed = true;
     std::string addTitle(dictionaryName + "(" + rangeName + ")");
