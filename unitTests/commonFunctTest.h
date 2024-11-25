@@ -1,7 +1,7 @@
 #ifndef COMMONFUNCTIONALITYTEST_H_
 #define COMMONFUNCTIONALITYTEST_H_
 
-#define GD_UNIT_TEST
+//#define GD_UNIT_TEST
 #include <array>
 #include "GenericDictionary.h"
 #include <iostream>
@@ -29,10 +29,12 @@ enum class TestFunctionalityEnumDict
 	FunctionalTest_16
 };
 
+using TestDataPair = GenericDictionary<TestFunctionalityEnumDict, std::string>::DictType;
+
 /*
  * Positive Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testPostivePathVec = 
+static std::vector<TestDataPair> testPostivePathVec = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -81,7 +83,7 @@ std::array<TestPair, 17> testPostivePathVec =
 /*
  * Negative Path Test Data
  */
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiIDMultiName = 
+static std::vector<TestDataPair> testVecMultiIDMultiName = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -102,7 +104,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiName = 
+static std::vector<TestDataPair> testVecMultiName = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -123,7 +125,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 6"}
 };
 
-static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>> testVecMultiID = 
+static std::vector<TestDataPair> testVecMultiID = 
 {
 	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
 	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
@@ -145,7 +147,7 @@ static std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::stri
 };
 
 constexpr std::size_t ArrayMax = 17;
-std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, ArrayMax>
-copyVecToArray(std::vector<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>>& testVec);
+std::array<TestDataPair, ArrayMax>
+copyVecToArray(std::vector<TestDataPair>& testVec);
 
 #endif // COMMONFUNCTIONALITYTEST_H_

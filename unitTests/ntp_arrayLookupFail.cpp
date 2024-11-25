@@ -14,7 +14,7 @@ int main()
     std::clog << "\n" << testTitle << std::endl;
     std::cout<< "<CTestLabel>" << testTitle << "</CTestLabel>" << std::endl;
 
-    std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, 17> positivePathArray = copyVecToArray(testPostivePathVec);
+    std::array<TestDataPair, 17> positivePathArray = copyVecToArray(testPostivePathVec);
 
     try
     {

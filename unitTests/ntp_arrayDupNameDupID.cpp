@@ -16,7 +16,7 @@ int main()
 
     try
     {
-        std::array<GenricDictionaryDataPair<TestFunctionalityEnumDict, std::string>, 17> negativePathArray = copyVecToArray(testVecMultiIDMultiName);
+        std::array<TestDataPair, 17> negativePathArray = copyVecToArray(testVecMultiIDMultiName);
 
         GenericDictionary<TestFunctionalityEnumDict, std::string> dictionary(negativePathArray);
 
