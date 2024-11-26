@@ -120,7 +120,7 @@ std::vector<GenricDictionaryDataPair> testVecMultiID =
 };
 
 constexpr std::size_t ArrayMax = 17;
-std::array<GenricDictionaryDataPair, 17>
+std::array<GenricDictionaryDataPair, ArrayMax>
 copyVecToArray(
     std::vector<GenricDictionaryDataPair>& testVec
 )

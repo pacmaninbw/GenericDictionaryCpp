@@ -228,7 +228,8 @@ static bool testFindIDFromName(
 
 static bool forceLookUpErrors(
     GenericDictionary<TestFunctionalityEnumDict, std::string>& dictionary,
-    std::string testName)
+    std::string testName
+)
 {
     bool testPassed = true;
     std::size_t idOutOfRange = static_cast<std::size_t>(TestFunctionalityEnumDict::FunctionalTest_16) + 10;
