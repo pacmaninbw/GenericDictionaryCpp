@@ -89,6 +89,4 @@ Multiple constructors have been added, including a default constructor.
  - Automate testing.
    - Generate test output to a file
    - Compare the test output to previous results.
- - Completely rework unit testing using CTest.
- - Get the `requires` for the range based constructor working properly.
  
