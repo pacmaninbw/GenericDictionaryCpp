@@ -1,5 +1,5 @@
 # GenericDictionaryCpp
-Generic C++ dictionary class to associate enums or symbolic names with strings.
+Generic C++23 dictionary class to associate enums or symbolic names with strings.
 
 ## C++ Generic Dictionary With Unit Test and Performance Tests  
 
