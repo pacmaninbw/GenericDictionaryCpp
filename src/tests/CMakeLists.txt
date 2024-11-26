@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.25)
 
 project(UnitTest LANGUAGES CXX)
 
+add_executable(exampleCode exampleCode.cpp)
+
 add_executable(arrayMultiNameMultiID arrayMultiNameMultiID.cpp)
 add_test(NAME arrayMultiNameMultiID COMMAND arrayMultiNameMultiID)
 set_property(TEST arrayMultiNameMultiID PROPERTY PASS_REGULAR_EXPRESSION "PASSED")

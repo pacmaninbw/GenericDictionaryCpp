@@ -3,11 +3,8 @@ Generic C++ dictionary class to associate enums or symbolic names with strings.
 
 ## C++ Generic Dictionary With Unit Test and Performance Tests  
 
-The src/include/GenericDictionary.h contains a generic class for associating enums or integers (numeric constants) 
+The GenericDictionary.h contains a generic class for associating enums or integers (numeric constants) 
 with strings or more complex mechanisms. It can be a base class for other converters.
-
-The src/tests/TestDictionary.cpp file contains the unit testing for the GenericDictionary 
-class as well as classes that inherit from the GenericDictionary base class.
 
 ## Learning Project  
 This project is a learning project, while the major goal is to provide a generic enum to string conversion class, the secondary goal is to keep my C++ skills up to date. What I am learning is:  
@@ -17,38 +14,41 @@ This project is a learning project, while the major goal is to provide a generic
    - std::expected  
  - Improve my knowledge of C++20 ranges  
 
-# Usage
-
-Strings can be assigned to EnumValue_1 through EnumValue_N.
-
-## Expected Input Type for a List  
-The follow struct is used to map enums to a name  
+# Exampe Usage
 
 ```
-struct GenricDictionaryDataPair<ENUMNAME, NameType>  // NameType will generally be std::string.   
-```
+#include "GenericDictionary.h"
+#include <string>
+#include <vector>
 
-## Constructors:  
+enum class ExampleEnum
+{
+	ExampleDemo_0,
+	ExampleDemo_1,
+	ExampleDemo_2
+};
 
-```
-GenericDictionary<ENUMNAME, NameType>(std::vector<GenricDictionaryDataPair<ENUMNAME, NameType>>)  
-   // Initializes the internal data structures for searches  
-   // Checks the input data for any duplicates or missing definitions
-   // will throw exceptions in the case of duplicates or missing definitions  
-GenericDictionary<ENUMNAME, NameType>({<GenricDictionaryDataPair<ENUMNAME, NameType>>, ...})  
-   // Initializes the internal data structures for searches  
-   // Checks the input data for any duplicates or missing definitions
-   // will throw exceptions in the case of duplicates or missing definitions  
-```
-     
-## Public Methods  
+using ExampleData = GenericDictionary<ExampleEnum, std::string>::DictType;
 
-```
-// Translate enums to names and names to enums
-    auto lookupID(DictName itemName) const -> std::expected<DictID, DictionaryLookUpError>;
-    auto lookupName(DictID id) const -> std::expected<DictName, DictionaryLookUpError>;
-// The lookup functions return C++23 std::expected which allows the user to check if
-// a valid value was returned before using the value.
+std::vector<ExampleData> ExampleInput = 
+{
+	{ExampleEnum::ExampleDemo_0, "Functional Test Str 0"},
+	{ExampleEnum::ExampleDemo_1, "Functional Test Str 1"},
+	{ExampleEnum::ExampleDemo_2, "Functional Test Str 2"}
+};
+
+int main()
+{
+    GenericDictionary<ExampleEnum, std::string> dictionary(ExampleInput);
+
+    auto checkID = dictionary.lookupID("Functional Test Str 0");
+    ExampleEnum exID = checkID.has_value()? *checkID : static_cast<ExampleEnum>(-1);
+
+    auto checkName = dictionary.lookupName(exID);
+    std::string exstr = checkName.has_value()? *checkName : "Not Found";
+    
+    return EXIT_SUCCESS;
+}
 
 ```
 
