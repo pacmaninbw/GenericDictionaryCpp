@@ -14,7 +14,9 @@ This project is a learning project, while the major goal is to provide a generic
    - std::expected  
  - Improve my knowledge of C++20 ranges  
 
-# Exampe Usage
+# Example Usage  
+
+The dictionary can be initialized with a range or an initialization list.
 
 ```
 #include "GenericDictionary.h"
