@@ -7,10 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
-include_directories(. ./unitTests ./src/PerformanceTestGenerator)
+include_directories(. ./unitTests ./PerformanceTestGenerator)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
     # Work around visual studio restrictions
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
@@ -32,7 +31,7 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 endif()
 
-add_subdirectory(src/PerformanceTestGenerator)
+add_subdirectory(PerformanceTestGenerator)
 add_subdirectory(src/tests)
 add_subdirectory(unitTests)
 
