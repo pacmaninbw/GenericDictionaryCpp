@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 
-std::array<TestDataPair, ArrayMax>
-copyVecToArray(std::vector<TestDataPair>& testVec)
+GDTestDataArray copyVecToArray(std::vector<TestDataPair>& testVec)
 {
     std::array<TestDataPair, ArrayMax> testArray;
     std::size_t i = 0;

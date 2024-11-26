@@ -57,29 +57,6 @@ static std::vector<TestDataPair> testPostivePathVec =
 
 constexpr std::size_t ForceIDFail = static_cast<std::size_t>(TestFunctionalityEnumDict::FunctionalTest_16) + 10;
 
-#if 0
-std::array<TestPair, 17> testPostivePathVec = 
-{
-	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
-	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
-	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
-	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
-	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
-	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
-	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
-	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
-	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
-	{TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
-	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
-	{TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 11"},
-	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 12"},
-	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
-	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
-	{TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
-	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
-};
-#endif
-
 /*
  * Negative Path Test Data
  */
@@ -147,7 +124,33 @@ static std::vector<TestDataPair> testVecMultiID =
 };
 
 constexpr std::size_t ArrayMax = 17;
-std::array<TestDataPair, ArrayMax>
-copyVecToArray(std::vector<TestDataPair>& testVec);
+
+using GDTestDataArray = std::array<TestDataPair, ArrayMax>;
+
+GDTestDataArray copyVecToArray(std::vector<TestDataPair>& testVec);
+
+#if 0
+GDTestDataArray testPostivePathArray = 
+{
+	{TestFunctionalityEnumDict::FunctionalTest_0, "Functional Test Str 0"},
+	{TestFunctionalityEnumDict::FunctionalTest_1, "Functional Test Str 1"},
+	{TestFunctionalityEnumDict::FunctionalTest_2, "Functional Test Str 2"},
+	{TestFunctionalityEnumDict::FunctionalTest_3, "Functional Test Str 3"},
+	{TestFunctionalityEnumDict::FunctionalTest_4, "Functional Test Str 4"},
+	{TestFunctionalityEnumDict::FunctionalTest_5, "Functional Test Str 5"},
+	{TestFunctionalityEnumDict::FunctionalTest_6, "Functional Test Str 6"},
+	{TestFunctionalityEnumDict::FunctionalTest_7, "Functional Test Str 7"},
+	{TestFunctionalityEnumDict::FunctionalTest_8, "Functional Test Str 8"},
+	{TestFunctionalityEnumDict::FunctionalTest_9, "Functional Test Str 9"},
+	{TestFunctionalityEnumDict::FunctionalTest_10, "Functional Test Str 10"},
+	{TestFunctionalityEnumDict::FunctionalTest_11, "Functional Test Str 11"},
+	{TestFunctionalityEnumDict::FunctionalTest_12, "Functional Test Str 12"},
+	{TestFunctionalityEnumDict::FunctionalTest_13, "Functional Test Str 13"},
+	{TestFunctionalityEnumDict::FunctionalTest_14, "Functional Test Str 14"},
+	{TestFunctionalityEnumDict::FunctionalTest_15, "Functional Test Str 15"},
+	{TestFunctionalityEnumDict::FunctionalTest_16, "Functional Test Str 16"}
+};
+#endif
+
 
 #endif // COMMONFUNCTIONALITYTEST_H_
