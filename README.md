@@ -12,9 +12,47 @@ This project is a learning project, while the major goal is to provide a generic
  - Learn CTest  
  - Learn C++23 features  
    - std::expected  
- - Improve my knowledge of C++20 ranges  
+ - Improving my knowledge of C++20 ranges  
 
-# Example Usage  
+# Usage  
+
+## Public Interface  
+
+```
+/******************************************************************************
+ * For errors in lookup functions
+ *****************************************************************************/
+enum class DictionaryLookUpError
+{
+    Id_Not_Found,
+    Name_Not_Found
+};
+
+/******************************************************************************
+ * Data structures and class Declarations
+ *****************************************************************************/
+template <typename DictID, typename DictName>
+class GenericDictionary
+{
+public:
+    struct DictType
+    {
+        DictID id;
+        DictName names
+    };
+    
+    GenericDictionary(std::initializer_list<DictType> definitions);
+
+    template<std::ranges::input_range R>
+    requires std::convertible_to<std::ranges::range_reference_t<R>, DictType>
+    GenericDictionary(R&& definitions);
+
+    auto lookupID(DictName itemName) const -> std::expected<DictID, DictionaryLookUpError>;
+    auto lookupName(DictID id) const -> std::expected<DictName, DictionaryLookUpError>;
+}
+```
+
+## Example Usage  
 
 The dictionary can be initialized with a range or an initialization list.
 
@@ -59,6 +97,7 @@ The DictionaryBase class should be portable to all systems and all C++23 compile
 # Development Environments  
 - C++ 23
 - CMake
+- CTest
 
 ## Linux Development  
 - gcc 12
@@ -73,20 +112,6 @@ The DictionaryBase class should be portable to all systems and all C++23 compile
 cmake -B build  
 cmake --build build -j
 
-# Status  
-This code was reviewed on the [Stack Exchange Code Review site](https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation). The code reviewed in that review can be found in the `PreCodeReview` branch. Development is continuing in the `master` branch.  
-
-The GenericDictionary class was reviewed a second time on the [Stack Exchange Code Review site](https://codereview.stackexchange.com/questions/294285/second-try-at-c-20-generic-dictionary-for-enums-and-strings). The branch that contains the code that was review is [PreThirdCodeReview](https://github.com/pacmaninbw/GenericDictionaryCpp/tree/PreThirdCodeReview). Any changes based on that code review will be included in the `master` branch`.
-
-The [performance test generator code was also reviewed](https://codereview.stackexchange.com/questions/293933/c20-performance-test-code-generator) on the Stack Exchange Code Review site. The code reviewed by that review can be found in found in this [branch on GitHub](https://github.com/pacmaninbw/DictionaryBaseCPP/tree/PerformanceTestGeneratorCodeReview).
-
-The master branch contains corrections from both code review.
-
-A new repository was created, the original version of the GenericDictionary was an abstract class, the current version can be used as is or can be used as a base class. The original version is in the [DictionaryBaseCPP repository](https://github.com/pacmaninbw/DictionaryBaseCPP).    
-
-Multiple constructors have been added, including a default constructor.  
 # Todo Items  
- - Automate testing.
-   - Generate test output to a file
-   - Compare the test output to previous results.
+ - Regression testing.
  
