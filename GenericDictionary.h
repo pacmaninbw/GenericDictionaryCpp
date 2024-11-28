@@ -16,17 +16,6 @@
  * 
  * This class makes an attempt to find any missing definitions during construction.
  * 
- * The code has been modified based on the Code Reviews
- * https://codereview.stackexchange.com/questions/293782/generic-c-class-to-associate-enum-values-with-strings-for-translation
- * and
- * https://codereview.stackexchange.com/questions/293933/c20-performance-test-code-generator
- * Changes since the reviews
- * - Multiple constructors and a destructor have been added.
- * - The lists are checked for missing definitions and duplicate definitions
- * - The class is no longer abstract
- * - dicID became DictID and dicName became DictName
- * - The struct used by the constructor now has a template GenricDictionaryDataPair.
- * 
  */
 
 /******************************************************************************
